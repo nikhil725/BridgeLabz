@@ -6,11 +6,11 @@ public class LeapYear{
 	System.out.println("Enter the Number");
 	int num = in.nextInt();
 	
-	if(num % 4 == 0){
-	System.out.println(num+" is a leap year");
-}else{
-	System.out.println(num+" is a not leap year");
-}
-	
-}
-}
+	if(num % 4 == 0)
+		{
+			System.out.println(num+" is a leap year");
+		}else{
+			System.out.println(num+" is a not leap year");
+			}
+		}
+	}
