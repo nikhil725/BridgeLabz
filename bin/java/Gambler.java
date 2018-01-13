@@ -10,11 +10,12 @@ public class Gambler{
 	int number = in.nextInt();
 	int stakeLoss=0;
 	int stakeWin=0;
+	double random = Math.random();
 	for(int i=0; i<number; i++)
 	{
 		while(stake!= goal)
 		{
-			if(Math.random() < 0.5)
+			if(random <= 0.5)
 			{
 				stake-= 2;
 			}else{
@@ -32,7 +33,9 @@ public class Gambler{
 			stakeWin++;			
 		}
 	}
-	System.out.println("Stake Win"+stakeWin);
-	System.out.println("Stake Loss"+stakeLoss);
+	double perc_of_win =  stakeWin*100/number;
+	double perc_of_loss = stakeLoss*100/number;
+	System.out.println("Stake Win "+stakeWin+"  Times..., And Number of percentage of win is  "+perc_of_win);
+	System.out.println("Stake Loss"+stakeLoss+"  Times..., And Number of percentage of Loss is  "+perc_of_loss);
 }
 }
