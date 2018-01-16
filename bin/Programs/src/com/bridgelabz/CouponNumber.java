@@ -1,4 +1,7 @@
-import java.util.*;
+
+package com.bridgelabz;
+import java.util.Scanner;
+
 public class CouponNumber
 {
 	
@@ -14,6 +17,7 @@ public class CouponNumber
 		
 		while(distinct<number)
 		{
+			
 			 val = (int) (Math.random()*number);
 			count++;
 			if(!value[val])
@@ -35,4 +39,3 @@ public class CouponNumber
 
 	}
 }
-
