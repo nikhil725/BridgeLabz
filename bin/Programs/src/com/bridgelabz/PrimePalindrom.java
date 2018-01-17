@@ -10,7 +10,7 @@ public class PrimePalindrom
 
 		char [] ab;
 		int arr;
-		System.out.println("hoiiiiiiiiii");
+		
 		int num =0;
 		//Empty String
 		String  primeNumbers = "";
