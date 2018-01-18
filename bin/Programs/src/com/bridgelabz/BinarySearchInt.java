@@ -18,10 +18,14 @@ public class BinarySearchInt {
 		
 		System.out.println("Enter search key");
 		int key = in.nextInt();
-		
+		Utility.bubbleSort(arr);
+		for(int a: arr){
+			System.out.print(a+" ");
+		}
 		int result = Utility.binarySearchforInt(arr, key, size);
 		
-		if(result == -1){
+		if(result == -1)
+		{
 			System.out.println(key+" element not found");
 			
 		}else{
@@ -29,8 +33,5 @@ public class BinarySearchInt {
 			System.out.println(key+" found at "+(result)+" location");
 		}
 		
-		
-		
 	}
-
 }

@@ -12,7 +12,7 @@ public class PrimePalindrom
 		int arr;
 		
 		int num =0;
-		//Empty String
+		
 		String  primeNumbers = "";
 		for (i = 1; i <= 1000; i++)         
 		{ 		  	  
