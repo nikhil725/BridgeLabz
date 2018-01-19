@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;My_Programs&apos;&#x0A;- Original project: &apos;My_Programs&apos;&#x0A;- Original elements:&#x0A;     unorderlist.text&#x0A;     unorderlist.txt&#x0A;     unorderlist.txt~" description="Delete elements" element1="src/com/bridgelabz/dsprograms/unorderlist.txt" element2="src/com/bridgelabz/dsprograms/unorderlist.txt~" element3="src/com/bridgelabz/dsprograms/unorderlist.text" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1516367018348" subPackages="false" version="1.0"/>
+</session>

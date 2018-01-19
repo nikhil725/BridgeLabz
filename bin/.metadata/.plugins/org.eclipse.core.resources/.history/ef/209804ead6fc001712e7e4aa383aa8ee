@@ -1,0 +1,45 @@
+package com.bridgelabz.utility;
+
+public class Utility {
+	
+	public double tempratureConvertion(int n, float value){
+		
+		double ans;
+		if (n == 0) {
+			value = value + 32;
+			ans = 1.8 * value;
+			return ans;
+		}
+		if (n == 1) {
+			value = value - 32;
+			ans = value * 0.5556;
+			return ans;
+		}
+		return 0;
+	}
+	
+	public double calculatePayment(int y, int p, float r){
+		
+			int n = 12 * y;
+			float i = r / (12 * 100);
+			double pow = Math.pow((1 + i), (-n));
+			double payment = p * i / (1 - pow);
+		return payment;
+		
+	}
+	
+	public double squarRoot(double n){
+		
+		double temp = n;
+		double Epsilon = 1E-15;
+		while ((Math.abs(temp - n / temp)) > (Epsilon * temp)) {
+			temp = (temp + (n / temp)) / 2;
+		}
+		return temp;
+		
+	}
+
+
+		
+	}
+
