@@ -2,7 +2,7 @@ package com.bridgelabz.algorithm_programs;
 
 import java.util.Scanner;
 
-public class BubbleSort {
+public class BubbleSort<E> {
 
 	public static void main(String[] args) {
 

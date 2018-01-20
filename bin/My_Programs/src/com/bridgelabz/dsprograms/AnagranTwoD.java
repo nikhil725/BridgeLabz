@@ -32,7 +32,7 @@ public class AnagranTwoD {
 						sum = (sum*10)+rem;
 						num=num/10;
 					}
-					if(sum==j)
+					if(sum==j)        
 					{
 						count++;
 					}

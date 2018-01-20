@@ -1,0 +1,17 @@
+package com.bridgelabz.dsprograms;
+
+import java.util.Scanner;
+
+import com.bridgelabz.utility.Utility;
+
+public class Prime {
+	
+	public static void main(String[] args) {
+		
+	Utility utility = new Utility();
+	Scanner scanner = new Scanner(System.in);
+	System.out.println("Enter Number");
+	int number  = scanner.nextInt();
+	 String [] strArray=utility.checkPrime(number);
+	}
+}

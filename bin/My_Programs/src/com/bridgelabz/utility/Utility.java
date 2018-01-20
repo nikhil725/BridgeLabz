@@ -1,5 +1,13 @@
 package com.bridgelabz.utility;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Stack;
+
 public class Utility {
 	
 	public double tempratureConvertion(int n, float value){
@@ -162,5 +170,144 @@ public class Utility {
 			}
 			return true;		
 		}
+	 
+	 public String[] checkPrime(int limit)
+	 {
+		 
+		 String[] array = new String[1000];
+	        int position = 0;
+	        for (int i = 2; i < limit; i++) //limit  times
+	        {
+	            boolean isPrime = true;
+	            
+	            for (int j = 2; j < i; j++) 
+	            {
+	                if (i % j == 0)
+	                {
+	                    isPrime = false;
+	                    break;
+	                }
+	            }
+
+	            if (isPrime) 
+	            {
+	                array[position] = String.valueOf(i);//index ibvalue to string
+	                position++;
+	            }
+	        }
+	        String[] array1 = new String[position];
+	        for (int k = 0; k < position; k++) 
+	        {
+	            array1[k] = array[k];
+	        }
+	        return array1;
+	 }
+	 
+	 public boolean checkAnagram(String string1, String string2){
+		 
+		 if (string1.length() != string2.length()) {
+	            return false;
+	        }
+	        char[] a = string1.toCharArray();
+	        sort(a);
+	        char[] b = string2.toCharArray();
+	        sort(b);
+	        for (int i = 0; i < a.length; i++) {
+	            if (a[i] != b[i]) {
+	                return false;
+	            }
+	        }
+	        return true;
+	    }
+
+	    public static void sort(char[] ab) 
+	    {
+	        for (int i = 0; i < ab.length; i++) 
+	        {
+	            for (int j = i + 1; j < ab.length; j++) 
+	            {
+	                if (ab[i] > ab[j]) {
+	                    char temp = ab[i];
+	                    ab[i] = ab[j];
+	                    ab[j] = temp;
+	                }
+	            }
+	 }
 	
 	}
+	    public boolean palindrome(String s) {
+	        if (s.length() < 2) {
+	            return false;
+	        }
+	        char[] c = s.toCharArray();
+	        int n = c.length;
+	        for (int i = 0; i < n; i++) 
+	        {
+	            if (c[i] != c[n - 1 - i])
+	            {
+	                return false;
+	            }
+	        }
+	        return true;
+	    }
+	    
+	    public void orderedList(ArrayList<Integer> list, File file) throws IOException {
+			
+			Scanner scan = new Scanner (System.in);
+			Iterator itr = list.iterator(); 
+			System.out.println("Enter the element to find");
+			int key = scan.nextInt();
+			while(itr.hasNext())
+			{
+				if(list.contains(key))
+				{
+					list.remove(list.indexOf(key));
+					break;
+				}
+				else
+				{
+					list.add(key);
+					list.sort(null);
+					break;
+				}
+			}
+			String str ="";
+			Iterator itr1 = list.iterator();
+			while(itr1.hasNext())
+			{
+				str+= itr1.next()+" ";
+			}
+			FileWriter fw = new FileWriter(file);
+			fw.write(str);
+			fw.flush(); 
+			
+			
+		}
+	    
+	    public void parenthesis(String exp, Stack<Integer> stk)
+	    {
+			int len = exp.length();
+			
+			System.out.println("\nMatches and Mismatches:\n");
+			for (int i = 0; i < len; i++) 
+			{
+				char ch = exp.charAt(i);
+				if (ch == '(')
+					stk.push(i);
+				
+				else if (ch == ')') 
+				{
+					try {
+						int p = stk.pop();
+						System.out.println("parenthes is matched");
+					} catch (Exception e) 
+					{
+						System.out.println("Parenthes is un mached");
+					}
+				}
+			}
+			while (!stk.isEmpty()) {
+				System.out.println((stk.pop()) + " is un matched");
+			}
+	    }
+}
