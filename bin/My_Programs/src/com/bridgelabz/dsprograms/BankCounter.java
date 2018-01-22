@@ -20,9 +20,12 @@ public class BankCounter {
 		String name;
 		
 		Queue<String> queue = new LinkedList<String>();
-
-		System.out.println("Enter Number");
-		name = scanner.nextLine();
+		
+		for(int i=0; i<number; i++ ){
+			
+		
+		System.out.println("Enter Name");
+		name = scanner.next();
 		queue.add(name);
 		
 		System.out.println("Enter A/C No");
@@ -34,5 +37,13 @@ public class BankCounter {
 		queue.add(Integer.toString(balance));
 	
 	}
+		while(queue.size()>0)
+		{
+			//System.out.println(" "+q.peek()+" your turn");
+		
+			Bank b=new Bank(queue.poll(),Integer.parseInt(queue.poll()),Integer.parseInt(queue.poll()));
+			b.process();
+		}
 
+}
 }

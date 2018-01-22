@@ -1,0 +1,30 @@
+package com.bridgelabz.dsprograms;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+
+public class HashTable {
+
+	public static void main(String[] args) throws IOException {
+			
+
+		File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/dsprograms/hashtable.txt");
+		BufferedReader buffer = new BufferedReader(new FileReader(file));
+
+		String str = buffer.readLine();
+		String[] strArray = str.split(" ");
+
+		Integer[] intArray = new Integer[strArray.length];
+
+		for (int i = 0; i < strArray.length; i++) {
+			intArray[i] = Integer.parseInt(strArray[i].trim());
+			
+		}
+		
+		HashMap hashmap = new HashMap();
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.bridgelabz.dsprograms;
+
+import java.util.Scanner;
+
+public class Bank {
+
+	public String name;
+	private int Acno;
+	private static int balance;
+	
+	Scanner in = new Scanner(System.in);
+	
+	public Bank() {
+		
+		this.name= name;
+		this.Acno = Acno;
+		this.balance = balance;
+		System.out.println("Transacion Completed");
+	}
+
+}

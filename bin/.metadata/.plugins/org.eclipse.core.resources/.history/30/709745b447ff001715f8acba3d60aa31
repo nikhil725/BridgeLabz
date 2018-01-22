@@ -1,0 +1,94 @@
+package com.bridgelabz.dsprograms;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.LinkedList;
+
+public class HashTable {
+
+	public static void main(String[] args) throws IOException {
+			
+
+		File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/dsprograms/hashtable.txt");
+		BufferedReader buffer = new BufferedReader(new FileReader(file));
+
+		String str = buffer.readLine();
+		String[] strArray = str.split(" ");
+
+		Integer[] intArray = new Integer[strArray.length];
+
+		for (int i = 0; i < strArray.length; i++) {
+			intArray[i] = Integer.parseInt(strArray[i].trim());
+			
+		}
+		
+		HashMap hashmap = new HashMap();
+		LinkedList ll0 = new LinkedList();
+		LinkedList ll1 = new LinkedList();
+		LinkedList ll2 = new LinkedList();
+		LinkedList ll3 = new LinkedList();
+		LinkedList ll4 = new LinkedList();
+		LinkedList ll5 = new LinkedList();
+		LinkedList ll6 = new LinkedList();
+		LinkedList ll7 = new LinkedList();
+		LinkedList ll8 = new LinkedList();
+		LinkedList ll9 = new LinkedList();
+		LinkedList ll10 = new LinkedList();
+		
+		for (Integer element : intArray) {
+			int rem = element % 11;
+			switch (rem) {
+			case 0:
+				linkedlist1.add(element);
+				hashMap.put(rem, linkedlist1);
+				break;
+
+			case 1:
+				linkedlist2.add(element);
+				hashMap.put(rem, linkedlist2);
+				break;
+			case 2:
+				linkedlist3.add(element);
+				hashMap.put(rem, linkedlist3);
+				break;
+			case 3:
+				linkedlist4.add(element);
+				hashMap.put(rem, linkedlist4);
+				break;
+			case 4:
+				linkedlist5.add(element);
+				hashMap.put(rem, linkedlist5);
+				break;
+			case 5:
+				linkedlist6.add(element);
+				hashMap.put(rem, linkedlist6);
+				break;
+			case 6:
+				linkedlist7.add(element);
+				hashMap.put(rem, linkedlist7);
+				break;
+			case 7:
+				linkedlist8.add(element);
+				hashMap.put(rem, linkedlist8);
+				break;
+			case 8:
+				linkedlist9.add(element);
+				hashMap.put(rem, linkedlist9);
+				break;
+			case 9:
+				linkedlist10.add(element);
+				hashMap.put(rem, linkedlist10);
+				break;
+			case 10:
+				linkedlist11.add(element);
+				hashMap.put(rem, linkedlist11);
+				break;
+			}
+		}
+		
+	}
+
+}
