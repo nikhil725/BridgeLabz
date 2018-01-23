@@ -2,13 +2,20 @@ package com.bridgelabz.functionalProgram;
 
 import java.util.Scanner;
 
+/**
+ * @purpose: This program takes a command-line argument N and prints a table of the powers
+ * 			 of 2 that are less than or equal to 2^N. 
+ * @author: Nikhil Vaidya
+ * @version: 1.0
+ * @since 10/01/2018
+ */
 public class PowerOfTwo 
 {
 	public static void main(String[] args)
 	{
-		Scanner in = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the Number");
-		int num = in.nextInt();
+		int num = scanner.nextInt();
 		int i=0;
 		int power =1;
 		while(i<=num){
@@ -16,5 +23,6 @@ public class PowerOfTwo
 			power = power*2;
 			i++;
 		}
+		scanner.close();
 	}
 }

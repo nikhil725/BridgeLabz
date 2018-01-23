@@ -1,0 +1,22 @@
+package com.bridgelabz.functionalProgram;
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ReplaceString {
+
+	public static void main(String[] args)
+	{	
+		Scanner scanner = new Scanner(System.in);
+		String msg = "Hello <<UserName>>, How are you ?";
+		System.out.println("Enter your name");
+		String name = scanner.next();
+		String firstName = "<<UserName>>";
+		Pattern pattern =  Pattern.compile(firstName);
+		Matcher m = patt.matcher(msg);
+		msg = m.replaceAll(name);
+		System.out.println(msg);	
+		scanner.close();
+	}	
+}

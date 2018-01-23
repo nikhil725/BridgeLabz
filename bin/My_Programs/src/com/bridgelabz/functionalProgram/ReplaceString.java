@@ -4,18 +4,26 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @purpose: User Input and Replace String Template “Hello <<UserName>>, How are you?”   
+ * @author: Nikhil Vaidya
+ * @version: 1.0
+ * @since 12/01/2018
+ */
+
 public class ReplaceString {
 
 	public static void main(String[] args)
 	{	
-		Scanner in = new Scanner(System.in);
-		String msg = "Hello <<UserName>>, How are you ?";
+		Scanner scanner = new Scanner(System.in);
+		String message = "Hello <<UserName>>, How are you ?";
 		System.out.println("Enter your name");
-		String name = in.next();
-		String fname = "<<UserName>>";
-		Pattern patt =  Pattern.compile(fname);
-		Matcher m = patt.matcher(msg);
-		msg = m.replaceAll(name);
-		System.out.println(msg);							
+		String name = scanner.next();
+		String firstName = "<<UserName>>";
+		Pattern pattern =  Pattern.compile(firstName);
+		Matcher matcher = pattern.matcher(message);
+		message = matcher.replaceAll(name);
+		System.out.println(message);	
+		scanner.close();
 	}	
 }

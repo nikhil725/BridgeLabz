@@ -3,6 +3,7 @@ package com.bridgelabz.utility;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -181,7 +182,12 @@ public class Utility {
 		for (int i = 2; i < limit; i++) //limit  times
 		{
 			boolean isPrime = true;
-
+			//			if(stake == 0)
+			//			{
+			//				stakeLoss++;
+			//			}else{
+			//				stakeWin++;			
+			//			}
 			for (int j = 2; j < i; j++) 
 			{
 				if (i % j == 0)
@@ -316,7 +322,7 @@ public class Utility {
 	public LinkedList serachMethod(LinkedList linkedList, int search, int k) 
 	{
 		Iterator iterator = linkedList.iterator();
-	
+
 		boolean found = false;
 		while (iterator.hasNext()) {
 			if (iterator.next().equals(search)) {
@@ -329,7 +335,11 @@ public class Utility {
 			linkedList.add(search);
 		return linkedList;
 	}
-	
+
+	/**
+	 * @param year
+	 * @return 
+	 */
 	public boolean isLeapYear(int year) {
 
 		if ((year % 4 == 0) && (year % 100 != 0)) {
@@ -342,4 +352,257 @@ public class Utility {
 			return false;
 		}
 	}
+
+	public static void initGame(int[][] board, int ROWS, int COLS)
+
+	{
+		int currentState;  
+		int PLAYING = 0;
+		int currentPlayer;
+		int Player_First = 1;
+
+		int EMPTY = 0;
+		for (int row = 0; row < ROWS; ++row) 
+		{
+			for (int col = 0; col < COLS; ++col)
+			{
+				board[row][col] = EMPTY;  
+			}
+		}
+		currentState = PLAYING;
+		currentPlayer = Player_First; 
+	}
+
+	public static boolean isDraw() 
+	{
+		int ROWS = 3, COLS= 3;
+		int EMPTY =0;
+		int[][] board = new int[ROWS][COLS];
+		for (int row = 0; row < ROWS; ++row) 
+		{
+			for (int col = 0; col < COLS; ++col) 
+			{
+				if (board[row][col] == EMPTY) 
+				{
+					return false; 
+				}
+			}
+		}
+		return true; 
+	}
+
+	public static boolean hasWon(int value, int currentRow, int currentCol)
+	{
+		int[][] board = new int[3][3];
+		return (board[currentRow][0] == value       
+				&& board[currentRow][1] == value
+				&& board[currentRow][2] == value
+				|| board[0][currentCol] == value    
+				&& board[1][currentCol] == value
+				&& board[2][currentCol] == value
+				|| currentRow == currentCol          
+				&& board[0][0] == value
+				&& board[1][1] == value
+				&& board[2][2] == value
+				|| currentRow + currentCol == 2  
+				&& board[0][2] == value
+				&& board[1][1] == value
+				&& board[2][0] == value);
+	}
+
+	public static void printBoard() 
+	{
+		int ROWS = 3, COLS= 3;
+		int[][] board = new int[ROWS][COLS];
+		for (int row = 0; row < ROWS; ++row) 
+		{
+			for (int col = 0; col < COLS; ++col) 
+			{
+				printCell(board[row][col]); 
+				if (col != COLS - 1) 
+				{
+					System.out.print("|");  
+				}
+			}
+			System.out.println();
+			if (row != ROWS - 1)
+			{
+				System.out.println("-----------"); 
+			}
+		}
+		System.out.println();
+	}
+
+	public static void printCell(int content) 
+	{
+		final int EMPTY = 0;
+		final int Player_First = 1;
+		final int Player_Sceond = 2;
+		switch (content) 
+		{
+		case EMPTY:  System.out.print("   "); break;
+		case Player_First:  System.out.print(" X "); break;
+		case Player_Sceond: System.out.print(" O "); break;
+		}
+	}
+
+	/**
+	 * @param value
+	 * @param board
+	 * @param currentRow
+	 * @param currentCol
+	 * @param ROWS
+	 * @param COLS
+	 * @param Player_First
+	 * 
+	 */
+	public static void playerMove(int value,int[][] board, int currentRow, int currentCol, int ROWS, int COLS, int Player_First) 
+	{
+		Scanner scanner= new Scanner(System.in);
+		boolean validInput = false;  
+		int EMPTY = 0;
+		do {
+			if (value == Player_First) {
+				System.out.print("Player_First, enter your move: ");
+			} else 
+			{
+				System.out.print("Player_Sceond, enter your move : ");
+			}
+			int row = scanner.nextInt() - 1; 
+			int col = scanner.nextInt() - 1;
+			if (row >= 0 && row < ROWS && col >= 0 && col < COLS && board[row][col] == EMPTY) 
+			{
+				currentRow = row;
+				currentCol = col;
+				board[currentRow][currentCol] = value;  
+				validInput = true;  
+			} 
+			else {
+				System.out.println("This move is not valid. Try again...");
+			}
+		} while (!validInput);  
+		scanner.close();
+	}
+
+	/**
+	 * @param value
+	 * @param currentRow
+	 * @param currentCol
+	 * @param currentState
+	 */
+	public static void updateGame(int value, int currentRow, int currentCol, int currentState) 
+	{
+
+		final int Player_First = 1;
+		final int DRAW = 1;
+		final int Player_First_WON = 2;
+		final int Player_Sceond_WON = 3;
+		if (hasWon(value, currentRow, currentCol)) { 
+			currentState = (value == Player_First) ? Player_First_WON : Player_Sceond_WON;
+		} else if (isDraw()) 
+		{ 
+			currentState = DRAW;
+		}  
+	}
+
+	public int start()
+	{
+		int startTime = (int) System.currentTimeMillis();
+		System.out.println("Start Time is: "+startTime);
+		return startTime;
+	}
+	public int stop()
+	{
+		int stopTime =(int) System.currentTimeMillis();
+		System.out.println("Start Time is: "+stopTime);
+		return stopTime;
+	}
+
+	public int sumOfThree(int[] arr, int length){
+
+		int count = 0;
+		for(int i=0; i<length; i++)
+		{
+			for(int j=i+1; j<length; j++)
+			{
+				for(int k=j+1; k<length ;k++)
+				{
+					if((arr[i] + arr[j] + arr[k]) == 0){
+						count++;
+						System.out.println(arr[i]+", "+arr[j]+", "+arr[k]+" Count = "+count);
+					}
+				}
+			}
+		}
+		return 0;
+	}
+
+	public void permute(String str, int l, int r)
+	{
+		if (l == r)
+		{
+			System.out.println(str);
+		}
+		else
+		{
+			for (int i = l; i <= r; i++)
+			{
+				str = swap(str,l,i);
+				permute(str, l+1, r);
+				str = swap(str,l,i);
+			}         
+		}     
+	}
+	public String swap(String a, int i, int j)
+	{
+		char temp;
+		char charArray[] = a.toCharArray();
+		temp = charArray[i] ;
+		charArray[i] = charArray[j];
+		charArray[j] = temp;
+		return String.valueOf(charArray);      
+	}
+
+
+	public boolean isAnagram(int length1, int length2, String firstString, String sceondString)
+	{
+		int found;
+		if(length1!=length2)
+		{
+
+			System.out.println("Given strings are not anagram");
+
+		}else{
+
+			for(int i=0; i<length1; i++)
+			{
+				found = 0;
+
+				for(int j=0; j<length1; j++)
+				{ 
+					if(firstString.charAt(i) == sceondString.charAt(j))
+					{
+						found = 1;
+						return true;
+					}
+
+			}
+		}
+		return false;
+		}
+		return false;
+}
+
+	public static <T> void print2DArray(T[][] arrayElements, int rows, int columns) {
+        PrintWriter writer = new PrintWriter(System.out);
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                writer.print(arrayElements[i][j] + " ");
+                writer.flush();
+            }
+            System.out.println();
+        }
+
+    }
 }

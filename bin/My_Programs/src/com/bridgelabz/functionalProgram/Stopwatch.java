@@ -2,37 +2,32 @@ package com.bridgelabz.functionalProgram;
 
 import java.util.Scanner;
 
+import com.bridgelabz.utility.Utility;
+
+/**
+ * @purpose: This is Stopwatch Program for measuring the time that elapses between the start
+ * 			 and end clicks
+ * @author: Nikhil Vaidya
+ * @version: 1.0
+ * @since 12/01/2018
+ */
 public class Stopwatch {
-
-	public static long startTime = 0;
-	public static long stopTime = 0;
-	public static long elapsedTime;
-
-
-	public void start()
-	{
-		startTime = System.currentTimeMillis();
-		System.out.println("Start Time is: "+startTime);
-	}
-	public void stop()
-	{
-		stopTime =System.currentTimeMillis();
-		System.out.println("Start Time is: "+stopTime); 
-	}
+	
 	public static void main(String[] args)
 	{
-		Stopwatch sp = new Stopwatch();
-		Scanner in = new Scanner(System.in);
+		Utility utility = new Utility();
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter  1 for start time");
-		int n = in.nextInt();
-		sp.start();
+		scanner.nextInt();
+		long startTime = utility.start();
 
 		System.out.println("Enter  2 for end time");
-		int m = in.nextInt();
-		sp.stop();
+		scanner.nextInt();
+		long stopTime = utility.stop();
 
-		elapsedTime = startTime - stopTime;
-		System.out.println("elapsedTime is: "+elapsedTime);  		
+		long elaspedTime = stopTime - startTime;
+		System.out.println("elapsedTime is: "+elaspedTime);
+		scanner.close();
 	}
 
 }

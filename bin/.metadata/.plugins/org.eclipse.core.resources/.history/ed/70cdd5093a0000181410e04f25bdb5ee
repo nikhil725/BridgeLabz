@@ -1,0 +1,30 @@
+package com.bridgelabz.functionalProgram;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class CouponNumber1 {
+	  public static void main(String [] args)
+		{
+		  System.out.println("Program Started");
+		  CouponNumber1 cn=new CouponNumber1();
+		  Scanner sc =new Scanner(System.in);
+		  System.out.println("Please enter the number of coupen :");
+		  int n=sc.nextInt();
+	          System.out.println("...................................");
+		  cn.random1(n);
+		  System.out.println();
+		  System.out.println("Program Ended");
+		}
+	   public void random1(int n)
+		{
+		   Random r=new Random();
+		  int m = (int) (Math.random()*n);
+	           for(int k=0;k<n;k++)
+			{
+			  System.out.print(" "+r.nextInt(9999)+" ");
+			}
+	        }
+	}
+
+

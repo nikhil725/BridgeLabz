@@ -1,45 +1,63 @@
 package com.bridgelabz.functionalProgram;
 
 import java.util.Scanner;
+/**
+ * @purpose: Simulates a gambler who start with $stake and place fair $1 bets until he/she
+ * 			 goes broke (i.e. has no money) or reach $goal..
+ * @author: Nikhil Vaidya.
+ * @version: 1.0
+ * @since 10/01/2018
+ */
 
 public class Gambler {
 
+	static double stakeLoss=0;
+	static double stakeWin=0;
+	static int stake;
+	
 	public static void main(String[] args){
-		Scanner in = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the number of stake");
-		int stake = in.nextInt();
+		stake = scanner.nextInt();
 		System.out.println("Enter the number of goal");
-		int goal = in.nextInt();
+		int goal = scanner.nextInt();
 		System.out.println("Enter the number of times");
-		int number = in.nextInt();
-		int stakeLoss=0;
-		int stakeWin=0;
-		double random = Math.random();
+		int number = scanner.nextInt();
+		
+		
 		for(int i=0; i<number; i++)
 		{
-			while(stake!= goal)
+			while((stake!= goal)||(stake != 0))
 			{
+				double random = Math.random();
+				//System.out.println(random);
 				if(random <= 0.5)
 				{
 					stake-= 2;
 				}else{
 					stake+= 2;
 				}
-				if(stake==0)
+		
+				if(stake == 0)
 				{
-				break;
-				}
+					stakeLoss++;
+					System.out.println("stakeLoss:" +stakeLoss);
+					break;
+				}else if (stake == goal){
+					stakeWin++;
+					System.out.println("stakeWin:" +stakeWin);
+					break;
+				}else 
+					continue;
 			}
-			if(stake == 0)
-			{
-				stakeLoss++;
-			}else{
-				stakeWin++;			
-			}
+	
 		}
+		
 		double perc_of_win =  stakeWin*100/number;
 		double perc_of_loss = stakeLoss*100/number;
 		System.out.println("Stake Win "+stakeWin+"  Times..., And Number of percentage of win is  "+perc_of_win);
 		System.out.println("Stake Loss"+stakeLoss+"  Times..., And Number of percentage of Loss is  "+perc_of_loss);
+		scanner.close();
 	}
+
 }

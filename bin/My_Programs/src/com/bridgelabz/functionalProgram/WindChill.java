@@ -2,6 +2,13 @@ package com.bridgelabz.functionalProgram;
 
 public class WindChill {
 	
+	/**
+	 * @purpose: This is program takes two double command-line arguments t and v and prints the wind chill. Use Math.pow(a, b) to compute ab.
+	 * @author: Nikhil Vaidya
+	 * @version: 1.0
+	 * @since 13/01/2018
+	 */
+	
 	public static void main(String args[])
 	{
 		double t = Double.parseDouble(args[0]);
@@ -10,6 +17,6 @@ public class WindChill {
 		System.out.println(" temperature "+t);
 		System.out.println(" Wind Speed "+v);
 		System.out.println(" Wind chill "+w);
-		}
+	}
 
 }

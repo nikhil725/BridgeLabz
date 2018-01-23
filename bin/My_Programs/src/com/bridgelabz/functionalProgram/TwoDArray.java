@@ -6,12 +6,12 @@ import java.util.Scanner;
 public class TwoDArray {
 	
 	public static void main(String[] args){
-		Scanner in = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		PrintWriter writer = new PrintWriter(System.out, true);
 		writer.println("Enter Row");
-		int m = in.nextInt();
+		int m = scanner.nextInt();
 		writer.println("Enter Col");
-		int n = in.nextInt();
+		int n = scanner.nextInt();
 		String[][] arr = new String[m][n];
 		writer.println("Enter the value");
 		
@@ -19,7 +19,7 @@ public class TwoDArray {
 		{
 			for(int j=0; j<n; j++)
 				{
-					arr[i][j]= in.next();		
+					arr[i][j]= scanner.next();		
 				}
 		}
 
