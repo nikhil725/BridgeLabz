@@ -8,11 +8,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
 
 public class Utility {
 
+	/** This method is used for temprature convertion.
+	 * @param n
+	 * @param value
+	 * @return
+	 */
 	public double tempratureConvertion(int n, float value){
 
 		double ans;
@@ -29,6 +35,12 @@ public class Utility {
 		return 0;
 	}
 
+	/** This method is used to calculate payment.
+	 * @param y
+	 * @param p
+	 * @param r
+	 * @return
+	 */
 	public double calculatePayment(int y, int p, float r){
 
 		int n = 12 * y;
@@ -39,6 +51,10 @@ public class Utility {
 
 	}
 
+	/** This method is to calculate squar root
+	 * @param c
+	 * @return
+	 */
 	public double squarRoot(double c){
 
 		double t = c;
@@ -211,6 +227,11 @@ public class Utility {
 		return array1;
 	}
 
+	/** This method is used to check the given strings are anagram.
+	 * @param string1
+	 * @param string2
+	 * @return
+	 */
 	public boolean checkAnagram(String string1, String string2){
 
 		if (string1.length() != string2.length()) {
@@ -243,6 +264,10 @@ public class Utility {
 		}
 
 	}
+	/** This method is used to find palindrome string 
+	 * @param s
+	 * @return
+	 */
 	public boolean palindrome(String s) {
 		if (s.length() < 2) {
 			return false;
@@ -336,7 +361,7 @@ public class Utility {
 		return linkedList;
 	}
 
-	/**
+	/** This method is used to check given year is leap year.
 	 * @param year
 	 * @return 
 	 */
@@ -459,6 +484,7 @@ public class Utility {
 	public static void playerMove(int value,int[][] board, int currentRow, int currentCol, int ROWS, int COLS, int Player_First) 
 	{
 		Scanner scanner= new Scanner(System.in);
+
 		boolean validInput = false;  
 		int EMPTY = 0;
 		do {
@@ -505,12 +531,19 @@ public class Utility {
 		}  
 	}
 
+	/** This method is used to start the time.
+	 * @return
+	 */
 	public int start()
 	{
 		int startTime = (int) System.currentTimeMillis();
 		System.out.println("Start Time is: "+startTime);
 		return startTime;
 	}
+	
+	/** This method is used to stop the time
+	 * @return
+	 */
 	public int stop()
 	{
 		int stopTime =(int) System.currentTimeMillis();
@@ -537,6 +570,11 @@ public class Utility {
 		return 0;
 	}
 
+	/** This method is used to find the permutations of string.
+	 * @param str
+	 * @param l
+	 * @param r
+	 */
 	public void permute(String str, int l, int r)
 	{
 		if (l == r)
@@ -553,6 +591,13 @@ public class Utility {
 			}         
 		}     
 	}
+	
+	/** This method is used to swap a string.
+	 * @param a
+	 * @param i
+	 * @param j
+	 * @return
+	 */
 	public String swap(String a, int i, int j)
 	{
 		char temp;
@@ -564,45 +609,108 @@ public class Utility {
 	}
 
 
-	public boolean isAnagram(int length1, int length2, String firstString, String sceondString)
+	/** This method is used to check the given strings are Anagram.
+	 * @param length1
+	 * @param length2
+	 * @param arr1
+	 * @param arr2
+	 * @return
+	 */
+	public boolean isAnagram(int length1, int length2, char[] arr1, char[] arr2)
 	{
-		int found;
+		int found =0;
 		if(length1!=length2)
 		{
-
-			System.out.println("Given strings are not anagram");
+			return false;
 
 		}else{
 
 			for(int i=0; i<length1; i++)
-			{
-				found = 0;
-
+			{			
 				for(int j=0; j<length1; j++)
 				{ 
-					if(firstString.charAt(i) == sceondString.charAt(j))
+					if(arr1[i]==arr2[j])
 					{
-						found = 1;
 						return true;
-					}
-
+						
+					}	
+					return false;
+				}	
 			}
 		}
 		return false;
-		}
-		return false;
-}
+	}
 
+	/** This method is used to display integer, double and boolean in 2D array format.
+	 * @param arrayElements
+	 * @param rows
+	 * @param columns
+	 */
 	public static <T> void print2DArray(T[][] arrayElements, int rows, int columns) {
-        PrintWriter writer = new PrintWriter(System.out);
+		PrintWriter writer = new PrintWriter(System.out);
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                writer.print(arrayElements[i][j] + " ");
-                writer.flush();
-            }
-            System.out.println();
-        }
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
+				writer.print(arrayElements[i][j] + " ");
+				writer.flush();
+			}
+			System.out.println();
+		}
 
-    }
+	}
+
+
+
+	/** This method is used to find distinct coupon number.
+	 * @param size
+	 */
+	public void couponNumber(int size)
+	{
+		int array[] = new int[size];
+		int count = 0;
+		for(int i=0; i<size;i++)
+		{
+			array[i]= (int)(Math.random()*size);
+			count++;
+			for(int j=0; j<i; j++){
+				
+				if(array[i]==array[j]){
+					i--;
+				}
+				
+			}
+		}
+		for(int i : array)
+		{
+			System.out.print(i+" ");
+		}
+		System.out.println();
+		System.out.println("Total Random number to have Distinct Number... "+count);
+
+	}
+	
+	/**This method for bubbleSort
+	 * @param arr
+	 */
+	public static void bubbleSort(String arr[]){
+		String temp;
+
+		for(int i=0; i<arr.length; i++) {
+			for(int j=0; j<arr.length-1-i; j++) {
+
+
+				if(arr[j].compareTo(arr[j+1])>=0) {
+
+					temp = arr[j];
+
+					arr[j] = arr[j+1];
+
+					arr[j+1] = temp;
+				}
+
+			}
+
+		}
+	}
+	
 }
