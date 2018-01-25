@@ -1,0 +1,35 @@
+package objectorientedprog;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class SimpleJson {
+
+	public static void main(String[] args) throws JSONException {
+
+		
+		JSONObject obj = new JSONObject();
+		JSONObject obj1 = new JSONObject();
+		
+		obj.put("name", "Basmati");
+		obj.put("price", 75);
+		obj.put("Weight", 2);
+		
+		obj1.put("Rice", obj);
+		
+		System.out.println(obj1);
+		
+		try {
+			FileWriter fileWriter = new FileWriter("/home/bridgeit/Desktop/json/simple.json");
+			fileWriter.write(obj1.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

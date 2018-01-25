@@ -66,6 +66,10 @@ public class Utility {
 
 	}
 
+	/** This method is used to check binary number.
+	 * @param n
+	 * @return
+	 */
 	public char[] toBinary(int n){
 
 		String temp = (String.format("%16s", Integer.toBinaryString(n)).replace(" ", "0"));
@@ -76,6 +80,9 @@ public class Utility {
 		return arr;
 	}
 
+	/** This method is used to calculate binary nibbles
+	 * @param num
+	 */
 	public void binaryNibbles(int num){
 
 		String temp=(String.format("%8s",Integer.toBinaryString(num)).replace(" ", "0"));
@@ -190,6 +197,10 @@ public class Utility {
 		return true;		
 	}
 
+	/** This method is used to check prime number.
+	 * @param limit
+	 * @return
+	 */
 	public String[] checkPrime(int limit)
 	{
 
@@ -365,7 +376,7 @@ public class Utility {
 	 * @param year
 	 * @return 
 	 */
-	public boolean isLeapYear(int year) {
+	public static boolean isLeapYear(int year) {
 
 		if ((year % 4 == 0) && (year % 100 != 0)) {
 			return true;
@@ -692,25 +703,74 @@ public class Utility {
 	/**This method for bubbleSort
 	 * @param arr
 	 */
-	public static void bubbleSort(String arr[]){
+	public static void bubbleSort(String arr[])
+	{
 		String temp;
-
-		for(int i=0; i<arr.length; i++) {
-			for(int j=0; j<arr.length-1-i; j++) {
-
-
-				if(arr[j].compareTo(arr[j+1])>=0) {
-
+		for(int i=0; i<arr.length; i++)
+		{
+			for(int j=0; j<arr.length-1-i; j++)
+			{
+				if(arr[j].compareTo(arr[j+1])>=0)
+				{
 					temp = arr[j];
-
 					arr[j] = arr[j+1];
-
 					arr[j+1] = temp;
 				}
-
 			}
-
 		}
 	}
+	/** This method is used to calculate day.
+	 * @param month
+	 * @param day
+	 * @param year
+	 * @return
+	 */
+	public static int day(int month, int day, int year)
+	{
+		int y = year - (14 - month) / 12;
+		int x = y + y/4 - y/100 + y/400;
+		int m = month + 12 * ((14 - month) / 12) - 2;
+		int d = (day + x + (31*m)/12) % 7;
+		return d;
+	}
 	
+	/** This method is used to display calendar.
+	 * @param year
+	 * @param month
+	 */
+	public static void calender(int year, int month)
+	{
+		
+		String months[] ={"","January","February","March","April","May","June","July","August","September",
+				"October","November","December"};
+
+		int days[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+		
+		if(month == 2 && isLeapYear(year))
+		{
+
+			days[month] = 29;
+		}
+
+		System.out.println("*****" + months[month] + " " + year+"*****");
+		System.out.println("--------------------");
+		System.out.println(" S  M T  W Th  F  S");
+		System.out.println("--------------------");
+		
+		int d = day(month, 1, year);
+		
+		for (int i = 0; i < d; i++)
+		{
+			System.out.print("   ");
+		}
+		for (int i = 1; i <= days[month]; i++) 
+		{
+			System.out.printf("%2d ", i);
+			if(((i + d) % 7 == 0) || (i == days[month])) 
+			{
+				System.out.println();
+			}
+			
+		}
+	}
 }

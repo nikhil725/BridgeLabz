@@ -37,13 +37,17 @@ public class Stack {
 			return top.data;		
 		}
 		
-		public void reverse(){
-			if(isEmpty()){
+		public void reverse()
+		{
+			if(isEmpty())
+			{
 				throw new EmptyStackException();
 			}
 		}
-		public void print(){
-			if(isEmpty()){
+		public void print()
+		{
+			if(isEmpty())
+			{
 				return;
 			}
 

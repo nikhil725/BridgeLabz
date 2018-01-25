@@ -1,0 +1,25 @@
+package objectorientedprog;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+public class SimpleJson {
+
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args){
+
+		
+		try {
+			
+			JSONObject jsonObject = new JSONObject();
+			JSONArray jsonArray = new JSONArray();
+			jsonObject.put("Name", "Nikhil");
+			jsonObject.put("Age", 28);
+			jsonObject.put("Address", "Mumbai");
+			
+		} catch (Exception e) {
+			
+		}
+		
+ }
+}

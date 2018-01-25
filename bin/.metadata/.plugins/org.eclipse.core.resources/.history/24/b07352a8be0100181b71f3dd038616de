@@ -1,0 +1,55 @@
+package objectorientedprog;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.swing.text.html.parser.Parser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+public class SimpleJson {
+
+	public static void main(String[] args) throws JSONException {
+
+		
+		JSONObject obj = new JSONObject();
+		JSONObject obj1 = new JSONObject();
+		JSONObject obj2 = new JSONObject();
+		JSONArray array = new JSONArray();
+		JSONParser parser = new JSONParser();
+		
+		obj.put("name", "Basmati");
+		obj.put("price", 75);
+		obj.put("Weight", 2);
+		array.put(0, obj);
+		obj2.put("name", "asd");
+		obj2.put("price", 70);
+		obj2.put("Weight", 2);
+		array.put(1, obj2);
+		obj1.put("Rice", array);
+		
+		System.out.println(obj1);
+		
+		
+		try {
+			
+			Object object = parser.parse(new FileReader("/home/bridgeit/Desktop/json/simple.json"));
+			JSONObject jsonObject = (JSONObject) object;
+			String name = (String)jsonObject.get("name");
+			System.out.println(name);
+//			FileWriter fileWriter = new FileWriter("/home/bridgeit/Desktop/json/simple.json");
+//			fileWriter.write(obj1.toString());
+//			fileWriter.close();
+			
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+	}
+
+}

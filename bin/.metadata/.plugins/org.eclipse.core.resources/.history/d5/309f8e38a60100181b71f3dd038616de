@@ -1,0 +1,27 @@
+package objectorientedprog;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class SimpleJson {
+
+	public static void main(String[] args) throws JSONException {
+
+		
+		JSONObject obj = new JSONObject();
+		JSONObject obj1 = new JSONObject();
+		
+		obj.put("name", "Tomato");
+		obj.put("price", 75);
+		obj.put("Weight", 2);
+		
+		System.out.println("Json object "+obj);
+		
+		obj1.put("Rice", obj);
+		
+		System.out.println(obj1);
+		
+		
+	}
+
+}

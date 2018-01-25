@@ -1,0 +1,11 @@
+package com.bridgelabz.dsprograms;
+
+
+
+public class WeekDayInQueue {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}
