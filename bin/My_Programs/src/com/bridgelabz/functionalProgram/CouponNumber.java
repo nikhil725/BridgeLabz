@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.bridgelabz.utility.Utility;
 
 /**
- * @purpose: This program find N distinct Coupon Numbers
+ * @purpose: This program find N distinct Coupon Numbers.
  * @author: Nikhil Vaidya
  * @version: 1.0
  * @since 10/01/2018

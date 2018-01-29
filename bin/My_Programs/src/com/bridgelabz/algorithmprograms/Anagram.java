@@ -11,7 +11,7 @@ import com.bridgelabz.utility.Utility;
  * @purpose: One string is an anagram of another if the second is simply a rearrangement of the first.
  * @author Nikhil Vaidya.
  * @version: 1.0
- *
+ * @date: 15/01/2018
  */
 public class Anagram {
 

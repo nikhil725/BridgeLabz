@@ -18,9 +18,9 @@ public class HashTable {
 		Scanner scanner = new Scanner(System.in);
 		Utility utility = new Utility();
 		File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/dsprograms/hashtable.txt");
-		BufferedReader buffer = new BufferedReader(new FileReader(file));
+		BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
-		String str = buffer.readLine();
+		String str = bufferedReader.readLine();
 		String[] strArray = str.split(" ");
 
 		Integer[] intArray = new Integer[strArray.length];

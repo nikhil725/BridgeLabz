@@ -4,15 +4,16 @@ import java.util.Scanner;
 
 import com.bridgelabz.utility.Utility;
 
-public class BinaryNibbles {
+class BinaryNibbles {
 
 	public static void main(String[] args) {
 
-		Utility util = new Utility();
-		Scanner in = new Scanner(System.in);
+		Utility utility = new Utility();
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter Number");
-		int num = in.nextInt();
-		util.binaryNibbles(num);
+		int number = scanner.nextInt();
+		utility.binaryNibbles(number);
+		scanner.close();
 		
 		
 

@@ -3,6 +3,9 @@ package com.bridgelabz.algorithmprograms;
 public class Utility {
 
 
+	/** This method insertion sort for integer.
+	 * @param arr
+	 */
 	public static void insertionSortforInt(int arr[]){
 		int leng = arr.length;
 		for (int i=1; i<leng; ++i)
@@ -16,10 +19,14 @@ public class Utility {
 				j = j-1;
 			}
 			arr[j+1] = key;
-		}	
-
-
+		}
 	}
+	/** This method binary search for integer.
+	 * @param arr
+	 * @param key
+	 * @param size
+	 * @return
+	 */
 	public static int binarySearchforInt(int arr[], int key,int size){
 
 		int first = 0;
@@ -49,6 +56,9 @@ public class Utility {
 
 	}
 
+	/** This method for bubble sort integer.
+	 * @param arr
+	 */
 	public static void bubbleSort(int arr[]){
 
 		int length = arr.length;
@@ -71,6 +81,9 @@ public class Utility {
 
 	}
 
+	/** This method for bubble sort string
+	 * @param arr
+	 */
 	public static void bubbleSort(String arr[]){
 		String temp;
 
@@ -92,6 +105,9 @@ public class Utility {
 		}
 	}
 
+	/** This method is used to sort the array using insertion sort method.
+	 * @param array
+	 */
 	public static void insertionSort(String[] array)
 	{
 		String temp;
@@ -117,28 +133,7 @@ public class Utility {
 		}
 	}
 
-	public static int binarySearch(String word, String arr[], int length){
 
-		int temp=0;
-		if(length <= temp){
-			return -1;
-		}
-		if(length - temp == 1){
-
-			return arr[temp].equals(word) ? temp : -1;
-		}
-
-		int pivot = (temp + length)/2;
-		if(word.compareTo(arr[pivot]) < 0)
-		{
-			return binarySearch(word, arr,pivot);
-		} 
-		else if(word.compareTo(arr[pivot]) > 0) 
-		{
-			return binarySearch(word, arr,pivot);
-		}
-		return pivot;
-
-	}
+	
 }
 

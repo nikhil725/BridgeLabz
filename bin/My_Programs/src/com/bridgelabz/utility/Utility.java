@@ -1,6 +1,8 @@
 package com.bridgelabz.utility;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +14,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
 
+
 public class Utility {
 
 	/** This method is used for temprature convertion.
@@ -19,12 +22,12 @@ public class Utility {
 	 * @param value
 	 * @return
 	 */
-	public double tempratureConvertion(int n, float value){
+	public double tempratureConvertion(int n, Double value){
 
 		double ans;
 		if (n == 0) {
-			value = value + 32;
-			ans = 1.8 * value;
+			value = value *1.8;
+			ans = value + 32;
 			return ans;
 		}
 		if (n == 1) {
@@ -75,8 +78,17 @@ public class Utility {
 		String temp = (String.format("%16s", Integer.toBinaryString(n)).replace(" ", "0"));
 		System.out.println("binary formate : " + temp);
 		char arr[] = temp.toCharArray();
+		int i, j = 15;
+		for (i = 0; i < arr.length; i++)
+		{
+			if (arr[i] == '1') 
+			{
+				int pow = (int) Math.pow(2, j);
 
-
+				System.out.print(pow + "\t");
+			}
+			j--;
+		}
 		return arr;
 	}
 
@@ -86,12 +98,13 @@ public class Utility {
 	public void binaryNibbles(int num){
 
 		String temp=(String.format("%8s",Integer.toBinaryString(num)).replace(" ", "0"));
-		//char arr[]=temp.toCharArray();
+
 		char[] m=new char[8];
 		m=temp.toCharArray();
 		char[] n=new char[8];
 		int i,j=0;
-		for (i =4 ; i<8 ; i++) {
+		for (i =4 ; i<8 ; i++) 
+		{
 			n[j]=m[i];
 			j++;
 		}
@@ -139,62 +152,6 @@ public class Utility {
 		{
 			System.out.println("number is not a power of two");
 		}
-	}
-
-	public class ListNode{
-		public String[] data;
-		public ListNode next;
-
-		public ListNode(String[] data) {
-			this.data = data;
-		}
-	}
-
-	ListNode head;
-
-	public void add(String[] data){
-		ListNode node = new ListNode(data);
-
-		node.next = head;
-		head = node;
-	}
-
-	public void remove(String data, int position){
-
-		if(position == 1){
-
-			ListNode temp = head;
-			head = head.next;
-			temp.next = null;
-		}else{
-			ListNode previous = head;
-			int count =1;
-			while(count < position-1){
-				previous = previous.next;
-				count++;
-			}
-
-			ListNode current = previous.next;
-			previous.next = current.next;
-			current.next = null;
-		}
-
-
-	}
-
-	boolean search(ListNode head, String[] key){
-		ListNode current = head;
-
-		while(current != null){
-
-			if(current.data == key){
-
-				return true;
-			}
-
-			current = current.next;
-		}
-		return true;		
 	}
 
 	/** This method is used to check prime number.
@@ -376,7 +333,7 @@ public class Utility {
 	 * @param year
 	 * @return 
 	 */
-	public static boolean isLeapYear(int year) {
+	public boolean isLeapYear(int year) {
 
 		if ((year % 4 == 0) && (year % 100 != 0)) {
 			return true;
@@ -551,7 +508,7 @@ public class Utility {
 		System.out.println("Start Time is: "+startTime);
 		return startTime;
 	}
-	
+
 	/** This method is used to stop the time
 	 * @return
 	 */
@@ -565,9 +522,9 @@ public class Utility {
 	public int sumOfThree(int[] arr, int length){
 
 		int count = 0;
-		for(int i=0; i<length; i++)
+		for(int i=0; i<length-2; i++)
 		{
-			for(int j=i+1; j<length; j++)
+			for(int j=i+1; j<length-1; j++)
 			{
 				for(int k=j+1; k<length ;k++)
 				{
@@ -586,23 +543,24 @@ public class Utility {
 	 * @param l
 	 * @param r
 	 */
-	public void permute(String str, int l, int r)
+	public void permute(String str,int length)
 	{
-		if (l == r)
+		int r=0;
+		if (length == r)
 		{
 			System.out.println(str);
 		}
 		else
 		{
-			for (int i = l; i <= r; i++)
+			for (int i = r; i<length; i++)
 			{
-				str = swap(str,l,i);
-				permute(str, l+1, r);
-				str = swap(str,l,i);
+				str = swap(str,length,i);
+				permute(str,length+1);
+				str = swap(str,length,i);
 			}         
 		}     
 	}
-	
+
 	/** This method is used to swap a string.
 	 * @param a
 	 * @param i
@@ -643,7 +601,7 @@ public class Utility {
 					if(arr1[i]==arr2[j])
 					{
 						return true;
-						
+
 					}	
 					return false;
 				}	
@@ -684,11 +642,11 @@ public class Utility {
 			array[i]= (int)(Math.random()*size);
 			count++;
 			for(int j=0; j<i; j++){
-				
+
 				if(array[i]==array[j]){
 					i--;
 				}
-				
+
 			}
 		}
 		for(int i : array)
@@ -699,7 +657,7 @@ public class Utility {
 		System.out.println("Total Random number to have Distinct Number... "+count);
 
 	}
-	
+
 	/**This method for bubbleSort
 	 * @param arr
 	 */
@@ -733,19 +691,19 @@ public class Utility {
 		int d = (day + x + (31*m)/12) % 7;
 		return d;
 	}
-	
+
 	/** This method is used to display calendar.
 	 * @param year
 	 * @param month
 	 */
 	public static void calender(int year, int month)
 	{
-		
+
 		String months[] ={"","January","February","March","April","May","June","July","August","September",
 				"October","November","December"};
 
 		int days[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
-		
+
 		if(month == 2 && isLeapYear(year))
 		{
 
@@ -756,9 +714,9 @@ public class Utility {
 		System.out.println("--------------------");
 		System.out.println(" S  M T  W Th  F  S");
 		System.out.println("--------------------");
-		
+
 		int d = day(month, 1, year);
-		
+
 		for (int i = 0; i < d; i++)
 		{
 			System.out.print("   ");
@@ -770,7 +728,395 @@ public class Utility {
 			{
 				System.out.println();
 			}
-			
+
 		}
 	}
-}
+
+	/** This method use for to calculate day.
+	 * @param month
+	 * @param year
+	 * @param day
+	 */
+	public void dayOfWeek(int month, int year, int day){
+
+		if (month > 0 && month < 13) {
+
+			if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+				if (day < 1 || day > 31) {
+					System.out.println("invalid date");
+					System.exit(0);
+				}
+			}
+			if (month == 4 || month == 6 || month == 9 || month == 11) {
+				if (day < 1 || day > 30) {
+					System.out.println("invalid date");
+					System.exit(0);
+				}
+			}
+			if (month == 2) {
+				if (day < 1 || day > 29) {
+					System.out.println("Date is invalid");
+					System.exit(0);
+				}
+			}
+
+			if (month == 2 && year % 4 != 0) {
+				if (day == 29) {
+					System.out.println("Date is invalid");
+					System.exit(0);
+				}
+			}
+			int y1 = year - (14 - month) / 12;
+			int x = y1 + (y1 / 4) - (y1 / 100) + (y1 / 400);
+			int m1 = month + 12 * ((14 - month) / 12) - 2;
+			int d1 = (day + x + (31 * m1) / 12) % 7;
+			String days[] = {"Sunday","Monday","Tuesday","Wednesday","Thursdsy","Friday","Saturday"};
+
+			System.out.println("the day on " + month + "/" + day + "/" + year + " is " + days[d1] + " .");
+		} else {
+			System.out.println("month is out of range");
+		}
+
+	}
+
+	/** This method is used to find number.
+	 * @param high
+	 * @param low
+	 * @param root
+	 */
+	public void findYourNumber(int high,int low, int root){
+
+		Scanner scanner = new Scanner(System.in);
+
+		for(int i=0; i<root; i++)
+		{
+			int mid = (high + low) / 2;
+			System.out.println("If your number between "+low+" To "+mid+" Press 1... OR "+mid+" To "+high+" Pess 0");
+			int value = scanner.nextInt();
+			if (value == 1) 
+			{
+				low = low;
+				high = mid;
+			}
+			else if(value == 0)
+			{
+				low = mid + 1;
+				high = high;
+			}
+			if (low == high) 
+			{
+				System.out.println("the number is" + mid);
+
+			}
+		}
+		scanner.close();
+	}
+
+	public static void insertionSort(int arr[]){
+		int leng = arr.length;
+		for (int i=1; i<leng; ++i)
+		{
+			int key = arr[i];
+			int j = i-1;
+
+			while (j>=0 && arr[j] > key)
+			{
+				arr[j+1] = arr[j];
+				j = j-1;
+			}
+			arr[j+1] = key;
+		}	
+		
+		for(int i : arr){
+
+			System.out.print(i+" ");
+		}
+
+
+	}
+
+	public void countNotes(int money, int[] notes, int i, int totalNotes) 
+	{
+		int count = 0;
+		if (money == 0) 
+		{
+			System.out.println("Total number of notes :" + totalNotes);
+			System.exit(0);
+		} else 
+		{
+			count = money / notes[i];
+			totalNotes = totalNotes + count;
+			System.out.println(notes[i] + "Rs notes are  " + count);
+			money = money % notes[i];
+			i++;
+		}
+		countNotes(money, notes, i, totalNotes);
+
+	}
+	public void unorderedList()
+	{
+		try {
+			File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/dsprograms/unorderlist.txt");
+
+			boolean mark = false;
+			BufferedReader buffer = new BufferedReader(new FileReader(file));
+
+			Scanner scanner = new Scanner(System.in);
+			String words = buffer.readLine();
+
+			FileWriter pw = new FileWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/dsprograms/unorderlist.text");
+			String[] str1 = words.trim().split(" ");
+
+			LinkedList<String> linkedList = new LinkedList<String>();
+
+			for (int i = 0; i < str1.length; i++)
+				linkedList.add(str1[i]);
+
+			System.out.println(linkedList.toString());
+
+			System.out.println("Enter the String to search...");
+			String search = scanner.next();
+
+			for (int i = 0; i < linkedList.size(); i++) {
+				if (linkedList.get(i).equals(search)) {
+					linkedList.remove(i);
+					mark = true;
+				}
+			}
+			System.out.println(linkedList.toString());
+
+			if (mark == false)
+				linkedList.add(search);
+
+			if (mark == true) 
+			{
+				for (int i = 0; i < linkedList.size(); i++) {
+					String str2 = (String) (linkedList.get(i)) + " ";
+					pw.write(str2);
+					pw.flush();
+				}
+
+			} else {
+				for (int i = 0; i < linkedList.size(); i++) 
+				{
+					String str11 = (String) linkedList.get(i) + " ";
+					pw.write(str11);
+					pw.flush();
+				}
+			}
+			System.out.println(linkedList.toString());
+			buffer.close();
+			scanner.close();
+			pw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
+
+	public void binarySearchForStr(){
+
+
+		Scanner scanner = new Scanner(System.in);
+		Utility utility = new Utility();
+		System.out.println("Enter array size");
+		int size = scanner.nextInt();
+		String arr[] = new String[size];
+		System.out.println("Enter " + size + " character ");
+		for (int i = 0; i < size; i++) {
+
+			arr[i] = scanner.nextLine();
+
+		}
+
+		System.out.println("Enter word to search");
+
+		String word = scanner.next();
+		utility.start();
+		Utility.bubbleSort(arr);
+		System.out.println("Sorted array is..");
+		for (String i : arr) {
+
+			System.out.print(i + " ");
+		}
+
+		int index = Utility.binarySearch(word, arr, arr.length);
+
+		if (index < 0) {
+			System.out.println("Word not found");
+		} else {
+			System.out.println("Word found at " + index + " location");
+		}
+	}
+
+	/** This method for binary search.
+	 * @param word
+	 * @param arr
+	 * @param length
+	 * @return
+	 */
+	public static int binarySearch(String word, String arr[], int length){
+
+		int temp=0;
+		if(length <= temp){
+			return -1;
+		}
+		if(length - temp == 1){
+
+			return arr[temp].equals(word) ? temp : -1;
+		}
+
+		int pivot = (temp + length)/2;
+		if(word.compareTo(arr[pivot]) < 0)
+		{
+			return binarySearch(word, arr,pivot);
+		} 
+		else if(word.compareTo(arr[pivot]) > 0) 
+		{
+			return binarySearch(word, arr,pivot);
+		}
+		return pivot;
+
+	}
+	/** This method insertion sort for integer.
+	 * @param arr
+	 */
+	public static void insertionSortforInt(int arr[]){
+		int leng = arr.length;
+		for (int i=1; i<leng; ++i)
+		{
+			int key = arr[i];
+			int j = i-1;
+
+			while (j>=0 && arr[j] > key)
+			{
+				arr[j+1] = arr[j];
+				j = j-1;
+			}
+			arr[j+1] = key;
+		}
+	}
+	public void insertionSortForString()
+	{
+		Scanner scanner = new Scanner(System.in);
+		Utility utility = new Utility();
+		System.out.println("Enter size of string array ");
+		int size = scanner.nextInt();
+
+		String array[] = new String[size];
+
+		System.out.println("Enter "+size+" character");
+
+		for(int i=0; i<size; i++){
+
+			array[i] = scanner.next();
+
+		}
+		utility.start();
+		Utility.insertionSort(array);
+
+		System.out.println("Sorted string...");
+
+		for(String i : array){
+
+			System.out.print(i+" ");
+		}
+		scanner.close();
+	}
+
+	/** This method is used to sort the array using insertion sort method.
+	 * @param array
+	 */
+	public static void insertionSort(String[] array)
+	{
+		String temp;
+		for(int i = 1; i < array.length; i++)
+		{
+			temp = array[i];
+			int j = 0;
+			for(j = i; j > 0; j--)
+
+				if(temp.compareTo(array[j - 1]) < 0){
+
+					array[j] = array[j - 1];
+				}
+				else{
+
+
+					break;
+				}		
+
+
+			array[j] = temp;
+
+		}
+		
+		for(String i : array){
+
+			System.out.print(i+" ");
+		}
+		
+	}
+
+
+	public void bubbleSortForInt(int size, int arr[]){
+
+		int m = size - 1;
+		while (m > 0) 
+		{
+			for (int i = 0; i < m; i++) 
+			{
+				if (arr[i] > arr[i + 1]) 
+				{
+					int temp;
+					temp = arr[i];
+					arr[i] = arr[i + 1];
+					arr[i + 1] = temp;
+				}
+			}
+
+			m--;
+		}
+		System.out.println("Sorted array is...");
+		for(int i=0; i<arr.length; i++){
+
+			System.out.print(arr[i]+" ");
+		}
+
+	}
+	
+	public void bubbleSorForString(){
+		
+		Scanner scanner = new Scanner(System.in);
+		Utility utility = new Utility();
+		System.out.println("Enter size of Array");
+		int size = scanner.nextInt();
+		String[] arr = new String[size];
+		
+		System.out.println("Enter "+size+" words");
+		for(int i=0; i<size; i++)
+		{
+			arr[i] = scanner.nextLine();
+		
+		}
+		System.out.println("Before sort String");
+		for(String i : arr)
+		{	
+			System.out.print(i+" ");	
+		}
+		utility.start();
+		Utility.bubbleSort(arr);
+		
+		System.out.println("Sorted String is....");
+		for(String i : arr ){
+			
+			System.out.print(i+" ");
+			
+		}
+		scanner.close();
+			
+	}
+		
+	}
+
+
+

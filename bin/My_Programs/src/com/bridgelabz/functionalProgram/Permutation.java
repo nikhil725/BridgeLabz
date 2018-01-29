@@ -18,9 +18,9 @@ public class Permutation
     	Utility utility = new Utility();
     	Scanner scanner=new Scanner(System.in);
     	System.out.println("enter the String");
-        String str = scanner.next();
-        int n = str.length();
-        utility.permute(str, 0, n-1);
+        String string = scanner.next();
+        int length = string.length();
+        utility.permute(string,length);
         scanner.close();
     }
     	

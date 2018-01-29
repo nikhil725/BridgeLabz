@@ -2,42 +2,30 @@ package com.bridgelabz.algorithmprograms;
 
 import java.util.Scanner;
 
+import com.bridgelabz.utility.Utility;
+
+/**
+ * @purpose: This program  takes a command-line argument N, asks you to think of a number between 0 and N-1, 
+ * 			 where N = 2^n, and always guesses the answer with n questions.
+ * @author Nikhil Vaidya.
+ * @version: 1.0
+ * @date: 15/01/2018
+ */
 public class FindYourNumber {
 
 	public static void main(String[] args) {
 
-		Scanner in = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
+		Utility utility = new Utility();
 		System.out.println("Enter your number");
-		int num = in.nextInt();
+		int number = scanner.nextInt();
 
-		int n = (int) Math.sqrt(num);
+		int root = (int) Math.sqrt(number);
 		
-		System.out.println("root is "+n);
-		int low =0, high = num-1;
-
-		
-		
-		for(int i=0; i<n; i++)
-		{
-			int mid = (high + low) / 2;
-			System.out.println("If your number between "+low+" To "+mid+" Press 1... OR "+mid+" To "+high+" Pess 0");
-			int val = in.nextInt();
-			if (val == 1) 
-			{
-				low = low;
-				high = mid;
-			}
-			else if(val == 0)
-			{
-				low = mid + 1;
-				high = high;
-			}
-			if (low == high) 
-			{
-				System.out.println("the number is" + mid);
-				
-			}
-		}
+		System.out.println("root is "+root);
+		int low =0, high = number-1;
+		utility.findYourNumber(high, low, root);
+		scanner.close();
 	}
 
 }

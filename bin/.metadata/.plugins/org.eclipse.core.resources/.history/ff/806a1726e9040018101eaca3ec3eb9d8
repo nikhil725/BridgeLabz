@@ -1,0 +1,85 @@
+package com.bridgelabz.algorithmprograms;
+
+import java.util.Scanner;
+
+import com.bridgelabz.utility.Utility;
+
+public class UtilityCode {
+
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		Utility utility = new Utility();
+		int choice;
+		do{
+		    System.out.println("Enter Your Choice.....");
+            System.out.println("1. Binary Search for String");
+            System.out.println("2. Insertion Sort for Integer");
+            System.out.println("3. Insertion Sort for String");
+            System.out.println("4. Bubble Sort for Interger");
+            System.out.println("5. Bubble Sort for String");
+            choice = scanner.nextInt();
+            int array[] = new int[5]; 
+            
+            switch(choice){
+            case 1:
+            	utility.binarySearchForStr();
+            	array[0] = utility.stop();
+            	break;
+            	
+            case 2:
+            	utility.insertionSort();
+            	array[0] = utility.stop();
+            	break;
+            	
+            case 3:
+            	utility.insertionSortForString();
+            	array[0] = utility.stop();
+            	break;
+            	
+            case 4:
+            	utility.bubbleSortForInt();
+            	array[0] = utility.stop();
+            	break;
+            	
+            case 5:
+            	utility.bubbleSorForString();
+            	utility.stop();
+            	break;
+            }
+		}while(choice!=0);
+		
+		
+//		utility.start();
+//		
+//		System.out.println("********* Binary Search for String *********");
+//		System.out.println();
+//		
+//		array[0]=utility.stop();
+//		
+//		utility.start();
+//		System.out.println("********* Insertion Sort for Integer *********");
+//		utility.insertionSort();
+//		array[1] = utility.stop();
+//		
+//		utility.start();
+		System.out.println("********* Insertion Sort for String *********");
+		utility.insertionSortForString();
+		array[2] = utility.stop();
+		
+		utility.start();
+		System.out.println("********* Bubble Sort for String *********");
+		utility.bubbleSorForString();
+		array[3] = utility.stop();
+		
+		utility.start();
+		System.out.println("********* Bubble Sort for Integer *********");
+		utility.bubbleSortForInt();
+		array[4] = utility.stop();
+		
+		for(int i : array){
+			
+			System.out.println("The array is: "+i);
+		}
+	}
+}

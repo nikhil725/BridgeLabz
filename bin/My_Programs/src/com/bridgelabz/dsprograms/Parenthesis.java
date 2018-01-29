@@ -15,6 +15,7 @@ public class Parenthesis {
 		Stack<Integer> stack = new Stack<Integer>();
 		String expression = scanner.next();
 		utility.parenthesis(expression, stack);
+		scanner.close();
 
 	}
 

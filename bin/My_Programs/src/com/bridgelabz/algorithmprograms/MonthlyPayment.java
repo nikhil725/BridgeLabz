@@ -1,24 +1,31 @@
 package com.bridgelabz.algorithmprograms;
 
 import java.util.Scanner;
-
 import com.bridgelabz.utility.Utility;
+
+/**
+ * @purpose: This program is used to calculate monthly payment.
+ * @author Nikhil Vaidya.
+ * @version: 1.0
+ * @date: 19/01/2018
+ */
 
 public class MonthlyPayment {
 
 	public static void main(String[] args)
 	{
 
-		Utility util = new Utility();
-		Scanner sc = new Scanner(System.in);
+		Utility utility = new Utility();
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("enter the principal amount ");
-		int p = sc.nextInt();
+		int principalAmont = scanner.nextInt();
 		System.out.println("interest rate ");
-		Float r = sc.nextFloat();
+		Float rate = scanner.nextFloat();
 		System.out.println("How many years");
-		int y = sc.nextInt();
-		double payment = util.calculatePayment(y, p, r);
+		int year = scanner.nextInt();
+		double payment = utility.calculatePayment(year, principalAmont, rate);
 		System.out.println("Monthly Payment is"+payment);
+		scanner.close();
 		
 	}
 }

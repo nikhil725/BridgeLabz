@@ -1,5 +1,7 @@
 package com.bridgelabz.functionalProgram;
 
+import java.util.Scanner;
+
 /**
  * @purpose: This program number of times to Flip Coin.
  * @author: Nikhil Vaidya.
@@ -13,8 +15,11 @@ public class FlipCoin
 
 		double head =0;
 		double tail =0;
-		float percentage_head,percentage_tail;
-		for(int i=0; i<90; i++)
+		float percentageHead,percentageTail;
+		System.out.println("How many times you want to filp coin");
+		Scanner scanner = new Scanner(System.in);
+		int number = scanner.nextInt();
+		for(int i=0; i<number; i++)
 		{
 			if(Math.random()<0.5)
 			{
@@ -22,15 +27,14 @@ public class FlipCoin
 			}else{
 				head++;
 			}
-		}
-		
+		}	
 		System.out.println("Head Total: "+head);
 		System.out.println("Tails Total: "+tail);
-		percentage_head= (float)((head/90)*100);
-		System.out.println("Percentage of head is: "+percentage_head);
-		percentage_tail =(float)((tail/90)*100);
-		System.out.println("Percentage of tail is:"+percentage_tail);
+		percentageHead= (float)((head/number)*100);
+		System.out.println("Percentage of head is: "+percentageHead);
+		percentageTail =(float)((tail/number)*100);
+		System.out.println("Percentage of tail is:"+percentageTail);
+		scanner.close();
 		
 	}
-
 }

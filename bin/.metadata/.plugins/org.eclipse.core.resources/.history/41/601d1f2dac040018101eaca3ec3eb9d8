@@ -1,0 +1,57 @@
+package com.bridgelabz.algorithmprograms;
+
+
+import java.util.Scanner;
+
+public class DayOfWeek {
+
+	public static void main(String[] args) {
+
+		Scanner scanner =new Scanner(System.in);
+		System.out.println("Enter the day");
+		int day= scanner.nextInt();
+		System.out.println("Enter the month");
+		int month=scanner.nextInt();
+		System.out.println("Enter the year");
+		int year=scanner.nextInt();
+
+		if (month > 0 && month < 13) {
+
+			if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+				if (day < 1 || day > 31) {
+					System.out.println("invalid date");
+					System.exit(0);
+				}
+			}
+			if (month == 4 || month == 6 || month == 9 || month == 11) {
+				if (day < 1 || day > 30) {
+					System.out.println("invalid date");
+					System.exit(0);
+				}
+			}
+			if (month == 2) {
+				if (day < 1 || day > 29) {
+					System.out.println("Date is invalid");
+					System.exit(0);
+				}
+			}
+
+			if (month == 2 && year % 4 != 0) {
+				if (day == 29) {
+					System.out.println("Date is invalid");
+					System.exit(0);
+				}
+			}
+			int y1 = year - (14 - month) / 12;
+			int x = y1 + (y1 / 4) - (y1 / 100) + (y1 / 400);
+			int m1 = month + 12 * ((14 - month) / 12) - 2;
+			int d1 = (day + x + (31 * m1) / 12) % 7;
+			String days[] = {"Sunday","Monday","Tuesday","Wednesday","Thursdsy","Friday","Saturday"};
+
+			System.out.println("the day on " + month + "/" + day + "/" + year + " is " + days[d1] + " .");
+		} else {
+			System.out.println("month is out of range");
+		}
+		scanner.close();
+	}
+}

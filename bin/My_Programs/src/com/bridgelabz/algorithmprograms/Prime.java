@@ -1,5 +1,13 @@
 package com.bridgelabz.algorithmprograms;
 
+
+/**
+ * @purpose: This program is used to generate prime number between 0-1000.
+ * @author Nikhil Vaidya.
+ * @version: 1.0
+ * @date: 17/01/2018
+ */
+
 public class Prime {
 
 	public static void main(String[] args) {

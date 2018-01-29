@@ -1,0 +1,32 @@
+package com.bridgelabz.algorithmprograms;
+
+import java.util.Scanner;
+
+import com.bridgelabz.utility.Utility;
+
+public class ToBinary {
+
+	public static void main(String[] args) {
+
+		Utility util = new Utility();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter number");
+		int number = scanner.nextInt();
+
+		char[] arr = util.toBinary(number);
+
+		int i, sum = 0;
+		int j = 15;
+		for (i = 0; i < arr.length; i++) {
+			if (arr[i] == '1') 
+			{
+				int pow = (int) Math.pow(2, j);
+
+				System.out.print(pow + "\t");
+			}
+			j--;
+
+		}
+
+	}
+}

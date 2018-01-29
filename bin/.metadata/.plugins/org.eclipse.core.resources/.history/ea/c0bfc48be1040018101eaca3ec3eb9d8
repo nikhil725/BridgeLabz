@@ -1,0 +1,23 @@
+package com.bridgelabz.algorithmprograms;
+
+import com.bridgelabz.utility.Utility;
+
+public class UtilityCode {
+
+	public static void main(String[] args) {
+		
+		int array[] = new int[6]; 
+		Utility utility = new Utility();
+		utility.start();
+		utility.binarySearchForStr();
+		array[0]=utility.stop();
+		
+		utility.start();
+		utility.insertionSort();
+		array[1] = utility.stop();
+		
+		utility.start();
+		utility.insertionSortForString();
+		array[2] = utility.stop();
+	}
+}

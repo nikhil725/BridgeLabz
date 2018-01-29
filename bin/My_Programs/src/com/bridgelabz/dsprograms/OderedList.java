@@ -13,12 +13,12 @@ public class OderedList {
 	public static void main(String[] args) throws IOException {
 		Utility utility=new Utility();
 		File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/dsprograms/oderedlist.txt");
-		FileReader fr = new FileReader(file);
-		BufferedReader br = new BufferedReader(fr);
+		FileReader fileReader = new FileReader(file);
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		String s;
 		String arr[]=null;
-		while((s=br.readLine())!=null)
+		while((s=bufferedReader.readLine())!=null)
 		{
 			arr  = s.split(" ");
 		}
@@ -30,5 +30,6 @@ public class OderedList {
 		list.sort(null);
 		System.out.println(list);
 		utility.orderedList(list,file);
+		bufferedReader.close();
 	}
 }

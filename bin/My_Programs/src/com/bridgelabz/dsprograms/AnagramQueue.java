@@ -3,6 +3,13 @@ package com.bridgelabz.dsprograms;
 import com.bridgelabz.utility.Queue;
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @purpose: This program is used to calculate anagram number between 0-1000 and stored in queue.
+ * @author Nikhil Vaidya.
+ * @version: 1.0
+ * @date: 20/01/2018
+ */
+
 public class AnagramQueue {
 	
 	public static void main(String[] args) {
@@ -21,7 +28,7 @@ public class AnagramQueue {
 	                {
 	                	
 	                	str1 = str[j];
-	                	queue.enqueue(str1);
+	          //      	queue.enqueue(str1);
 	                }
 	            }
 	        }

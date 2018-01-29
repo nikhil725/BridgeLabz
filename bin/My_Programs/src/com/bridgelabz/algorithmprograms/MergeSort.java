@@ -2,6 +2,13 @@ package com.bridgelabz.algorithmprograms;
 
 import java.util.Scanner;
 
+/**
+ * @purpose: This program is used to sort array using merge sort.
+ * @author Nikhil Vaidya.
+ * @version: 1.0
+ * @date: 18/01/2018
+ */
+
 public class MergeSort {
 
 	private static final String[][] String = null;

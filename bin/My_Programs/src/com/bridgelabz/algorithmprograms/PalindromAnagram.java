@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @purpose: This program is used to check given string is palindrom and angram.
+ * @author Nikhil Vaidya.
+ * @version: 1.0
+ * @date: 17/01/2018
+ */
+
 public class PalindromAnagram {
 
 	public static void main(String[] args) {
@@ -44,7 +51,7 @@ public class PalindromAnagram {
 	                System.out.print(strArray[i]+"\t");
 	            }
 	        }
-	        
-		
+	        scanner.close();
 	}
+	
 }

@@ -15,10 +15,10 @@ public class PowerOfTwo
 	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the Number");
-		int num = scanner.nextInt();
+		int number = scanner.nextInt();
 		int i=0;
 		int power =1;
-		while(i<=num){
+		while(i<=number){
 			System.out.println("Power of 2^"+i+"=" +power);
 			power = power*2;
 			i++;

@@ -2,6 +2,13 @@ package com.bridgelabz.functionalProgram;
 
 import java.util.Scanner;
 
+/**
+ * @purpose: This program for TicTacToc game.
+ * @author: Nikhil Vaidya
+ * @version: 1.0
+ * @since 13/01/2018
+ */
+
 public class TicTacToc {
 
 	public static final int EMPTY = 0;
