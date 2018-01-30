@@ -30,7 +30,18 @@ public class UtilityCode {
             case 1:
             	System.out.println("*****Binary Search for String******");
             	System.out.println();
-            	utility.binarySearchForStr();
+        		System.out.println("Enter array size of array");
+        		int size = scanner.nextInt();
+        		String array[] = new String[size];
+        		System.out.println("Enter " + size + " character ");
+        		for (int i = 0; i < size; i++) {
+
+        			array[i] = scanner.next();
+        		}
+        		int length = array.length;
+        		System.out.println("Enter word to search");
+        		String word = scanner.next();
+        		utility.binarySearch(word, array, length);
             	arr[j++] = utility.stop();
             	
             	
@@ -38,16 +49,17 @@ public class UtilityCode {
             	System.out.println("*****Insertion Sort For Integer******");
             	System.out.println();
         		System.out.println("Enter the size of array");
-        		int size = scanner.nextInt();
-        		int[] array = new int[size];
-        		System.out.println("Enter the"+size+" element in array");
-
-        		for(int i=0; i<size; i++){
-
-        			array[i] = scanner.nextInt();
-        		}
+        		int size3 = scanner.nextInt();
         		long startTime = utility.start();
-            	utility.insertionSort(array);
+        		int[] array3 = new int[size3];
+        		System.out.println("Enter the"+size3+" element in array");
+
+        		for(int i=0; i<size3; i++){
+
+        			array3[i] = scanner.nextInt();
+        		}
+        		
+            	utility.insertionSort(array3);
             	long endTime =  utility.stop();
             	arr[j++] = endTime - startTime; 
             	
@@ -55,8 +67,9 @@ public class UtilityCode {
             	System.out.println("*****Insertion Sort For String******");
             	System.out.println();
         		System.out.println("Enter size of string array ");
+        		
         		int size1 = scanner.nextInt();
-
+        		long startTime1 = utility.start();
         		String array1[] = new String[size1];
 
         		System.out.println("Enter "+size1+" character");
@@ -65,7 +78,7 @@ public class UtilityCode {
         		{
         			array1[i] = scanner.next();
         		}
-        		long startTime1 = utility.start();
+        		
         		Utility.insertionSort(array1);
             	arr[2] = utility.stop();
             	long endTime1 =  utility.stop();
@@ -76,51 +89,51 @@ public class UtilityCode {
             	System.out.println();
         		System.out.println(" Enter the size of array");
         		int size2 = scanner.nextInt();
+        		long startTime2 = utility.start();
         		int[] array2 = new int[size2];
         		System.out.println("Enter "+size2+" elements");
 
-        		for(int i=0; i<size2; i++){
-
+        		for(int i=0; i<size2; i++)
+        		{
         			array2[i] = scanner.nextInt();
-
         		}
-        		utility.start();
+        		
             	utility.bubbleSortForInt(size2,array2);
-            	arr[3] = utility.stop();
+            	long endTime2 = utility.stop();
+            	arr[j++] = endTime2 - startTime2;
             	break;
             	
             case 5:
             	System.out.println("*****Bubble sort for string******");
             	System.out.println();
         		System.out.println("Enter size of Array");
-        		int size3 = scanner.nextInt();
-        		String[] array3 = new String[size3];
+        		int size4 = scanner.nextInt();
+        		long startTime3 = utility.start();
+        		String[] array4 = new String[size4];
         		
-        		System.out.println("Enter "+size3+" words");
-        		for(int i=0; i<size3; i++)
+        		System.out.println("Enter "+size4+" words");
+        		for(int i=0; i<size4; i++)
         		{
-        			array3[i] = scanner.next();
-        		
+        			array4[i] = scanner.next();
         		}
         		System.out.println("Before sort String");
-        		for(String i : array3)
+        		for(String i : array4)
         		{	
         			System.out.print(i+" ");	
         		}
-        		utility.start();
-            	utility.bubbleSort(array3);
-            	arr[4] = utility.stop();
+        		
+            	utility.bubbleSort(array4);
+            	long endTime3 = utility.stop();
+            	arr[j++] = endTime3 - startTime3;
             	break;
             }
-            for(long i : arr){
-    			System.out.println("The array is: "+i);
-    		}
     		
 		}while(choice!=0);
 		
 		for(long i : arr){
 			System.out.println("The array is: "+i);
 		}
+		
 		
 		
 		}

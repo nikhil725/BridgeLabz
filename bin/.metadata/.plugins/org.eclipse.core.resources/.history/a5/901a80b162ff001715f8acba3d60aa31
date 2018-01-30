@@ -1,8 +1,0 @@
-package com.bridgelabz.dsprograms;
-
-public class Calender {
-
-	public Calender() {
-		
-	}
-}

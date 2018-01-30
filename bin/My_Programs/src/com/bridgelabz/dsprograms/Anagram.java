@@ -11,14 +11,6 @@ public class Anagram {
 	dispAngram( 1000);
 		System.out.println("Program Ended");
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	public static void dispAngram(int n) {
 		int num = n;
 	

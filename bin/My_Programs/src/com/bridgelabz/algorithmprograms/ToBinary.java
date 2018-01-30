@@ -1,7 +1,5 @@
 package com.bridgelabz.algorithmprograms;
 
-import java.util.Scanner;
-
 import com.bridgelabz.utility.Utility;
 
 /**
@@ -12,13 +10,11 @@ import com.bridgelabz.utility.Utility;
  */
 class ToBinary {
 
-	public static void main(String[] args) {
-
+	public static void main(String[] args)
+	{
 		Utility utility = new Utility();
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter number");
-		int number = scanner.nextInt();
+		int number = utility.getInt();
 		utility.toBinary(number);
-		scanner.close();
 	}
 }

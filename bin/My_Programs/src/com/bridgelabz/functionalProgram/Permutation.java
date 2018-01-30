@@ -1,7 +1,4 @@
 package com.bridgelabz.functionalProgram;
-
-import java.util.Scanner;
-
 import com.bridgelabz.utility.Utility;
 
 /**
@@ -13,15 +10,14 @@ import com.bridgelabz.utility.Utility;
 
 public class Permutation
 {
-    public static void main(String[] args)
-    {
-    	Utility utility = new Utility();
-    	Scanner scanner=new Scanner(System.in);
-    	System.out.println("enter the String");
-        String string = scanner.next();
-        int length = string.length();
-        utility.permute(string,length);
-        scanner.close();
-    }
-    	
-}
+	
+	    public static void main(String[] args)
+	    {
+	    	Utility utility = new Utility();
+	    	System.out.println("enter the String");
+	        String string = utility.getString();
+	        int length = string.length();
+	        utility.permutation(string, 0, length-1);
+	    }
+
+	} 	

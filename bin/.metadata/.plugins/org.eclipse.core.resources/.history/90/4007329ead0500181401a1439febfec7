@@ -1,0 +1,16 @@
+package com.bridgelabz.objectorientedprog;
+
+public class Inventory {
+	public static void main(String[] args) {
+		Utility utility = new Utility();
+
+	
+			utility.writeData();
+				
+				
+			utility.readData();
+			
+			
+		}
+
+}

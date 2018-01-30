@@ -56,7 +56,7 @@ public class Utility {
 
 	}
 
-	/** This method for bubble sort integer.
+	/** This method for bubble sort integer.System.out.println("Sorted array is..");
 	 * @param arr
 	 */
 	public static void bubbleSort(int arr[]){
