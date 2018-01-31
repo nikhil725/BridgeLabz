@@ -1,0 +1,67 @@
+package com.bridgelabz.objectorientedprog;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import com.bridgelabz.utility.Utility;
+
+public class StockReport {
+
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) throws FileNotFoundException {
+		@SuppressWarnings("unused")
+		JSONObject jsonObject = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+		PrintWriter printWriter = new PrintWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/StockReport.json");
+		Utility utility = new Utility();
+		System.out.println("Enter Number of company");
+		int number = Utility.getInt();
+		String[] array = new String[number];
+		int share[] = new int[number];
+		int amount[] = new int[number];
+		int total[] = new int[number];
+		System.out.println("Enter company name");
+		int totalStock=0;
+		for(int i=0; i<number; i++){
+
+			array[i] = Utility.getString();
+		}
+
+
+		for(int i=0; i<number; i++){
+			System.out.println("Enter the number of shares for "+array[i]+" and share amount");
+			share[i] = Utility.getInt();
+			amount[i] = Utility.getInt();
+		}
+
+		for(int i=0; i<number; i++){
+			total[i] = share[i]*amount[i];
+		}
+		System.out.println();
+		System.out.println("*******************Stock Report**************************");
+		System.out.println();
+		System.out.println("  Company Name    Shares    Price   total of each");
+		System.out.println();
+		for(int i=0; i<number; i++){
+
+			System.out.println("  "+array[i]+"        "+share[i]+"       "+amount[i]+"     "+total[i]+"/-");
+		}
+		jsonArray.add(0, array);
+		jsonArray.add(1, share);
+		jsonArray.add(2, amount);
+		jsonArray.add(3, total);
+		jsonObject.put("", jsonArray);
+		printWriter.write(jsonArray);
+		System.out.println();
+		for(int i=0; i<number; i++){
+
+			totalStock+= share[i]*amount[i];
+		}
+		
+
+		System.out.println("Total number of stock is "+totalStock+"/-");
+	}
+}

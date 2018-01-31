@@ -35,6 +35,8 @@
 		<item value="11" key="INCLUDE_MASK"/>
 	</section>
 	<section name="completion_proposal_size">
+		<item value="407" key="contextSelector.size.y"/>
+		<item value="317" key="contextSelector.size.x"/>
 	</section>
 	<section name="JavaElementSearchActions">
 	</section>
