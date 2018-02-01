@@ -20,7 +20,6 @@ public class Bank {
 		System.out.println("Transacion Completed");
 	}
 
-
 	void process()
 	{
 		int number=1,val;
@@ -72,7 +71,7 @@ public class Bank {
 		if(balance>amount)
 		{
 			balance-=amount;
-			this.Bankbalance-=amount;
+		//	this.Bankbalance-=amount;
 			if(Bankbalance<=0)
 			{
 				System.out.println("maintain your account with Rs.2000 .");
