@@ -9,6 +9,12 @@ import org.json.simple.JSONObject;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @purpose : This program is used for to maintain stock report.
+ * @author  : Nikhil Vaidya.
+ * @version : 1.0
+ * @date    : 01/02/2018
+ */
 public class StockReport {
 
 	@SuppressWarnings("unchecked")

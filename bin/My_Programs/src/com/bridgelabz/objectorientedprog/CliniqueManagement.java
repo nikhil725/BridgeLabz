@@ -2,6 +2,13 @@ package com.bridgelabz.objectorientedprog;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @purpose : This program is used for Clinique Management System.
+ * @author  : Nikhil Vaidya.
+ * @version : 1.0
+ * @date    : 31/01/2018
+ *
+ */
 public class CliniqueManagement {
 
 	public static void main(String[] args) {

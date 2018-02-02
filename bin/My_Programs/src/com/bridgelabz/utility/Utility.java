@@ -9,27 +9,33 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.rmi.CORBA.Util;
+
+import javax.swing.plaf.basic.BasicScrollPaneUI.VSBChangeListener;
 
 import org.json.JSONException;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONAware;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Utility {
+import com.bridgelabz.objectorientedprog.Queue;
+import com.bridgelabz.objectorientedprog.Stack1;
 
+public class Utility {
+	
 	int i =0;
 	static Scanner scanner;
 	public Utility() {
@@ -691,8 +697,6 @@ public class Utility {
 
 	}
 
-
-
 	/** This method is used to find distinct coupon number.
 	 * @param size
 	 */
@@ -875,6 +879,9 @@ public class Utility {
 		scanner.close();
 	}
 
+	/** This method is used for insertion sort.
+	 * @param arr
+	 */
 	public static void insertionSort(int arr[]){
 		int leng = arr.length;
 		for (int i=1; i<leng; ++i)
@@ -898,6 +905,12 @@ public class Utility {
 
 	}
 
+	/** This method is used to calculate minimum notes.
+	 * @param money
+	 * @param notes
+	 * @param i
+	 * @param totalNotes
+	 */
 	public void countNotes(int money, int[] notes, int i, int totalNotes) 
 	{
 		int count = 0;
@@ -1323,6 +1336,10 @@ public class Utility {
 
 
 
+	/** This method is used to display the cards
+	 * @param SUITS
+	 * @param RANKS
+	 */
 	public void deckOfCards(String[] SUITS, String[] RANKS) {
 		int lengthOfCards = SUITS.length * RANKS.length;
 		String deck[] = new String[lengthOfCards];
@@ -1366,6 +1383,10 @@ public class Utility {
 		}
 	}
 
+	/** This method is used to add cards in queue. 
+	 * @param SUITS
+	 * @param RANKS
+	 */
 	public void deckOfCardsInQueue(String[] SUITS, String[] RANKS) {
 
 		CardQueue cardQueue = new CardQueue();
@@ -1404,102 +1425,134 @@ public class Utility {
 		String name;
 		int numberOfShare, amount;
 
-		System.out.println("Enter the name of the user......");
+		System.out.println("Enter First Name");
 		name = Utility.getString();
 
 		stockUser.put("user_Name", name);
 
-		System.out.println("Enter the Number of Share");
+		System.out.println("Enter Number of Shares");
 		numberOfShare = scanner.nextInt();
 		stockUser.put("number_Share", numberOfShare);
 
-		System.out.println("Enter the amount......");
+		System.out.println("Enter your balance");
 		amount = scanner.nextInt();
 		stockUser.put("amount", amount);
 		jsonArray.add(stockUser);
 		JSONParser jsonParser = new JSONParser();
-		Object object1 = jsonParser.parse(reader);
+		JSONArray object1 = (JSONArray) jsonParser.parse(reader);
 		
-		boolean b = true;
-		Iterator<?> itr1 = jsonArray.iterator();
-		while(itr1.hasNext()) {
+		boolean found = true;
+		Iterator<?> itr1 = (object1).iterator();
+		while(itr1.hasNext()) 
+		{
 			JSONObject jsonDeatils = (JSONObject) itr1.next();
 			String userName = (String) jsonDeatils.get("user_Name");
-			if (userName.equals(name)) {
-				System.out.println("user Already Exsists.............");
-				b = false;
+			if (userName.equalsIgnoreCase(name))
+			{
+				System.out.println("This "+name+" user is already created");
+				found = false;
 			}
 		}
-		if (b == true) {
-			((JSONArray) jsonArray).add(stockUser);
+		if (found)
+		{
+			object1.add(stockUser);
+			/*((JSONArray) jsonArray).add(stockUser);*/
 			FileWriter fileWriter = new FileWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/userDetails.json");
-			fileWriter.write(((JSONAware) jsonArray).toJSONString());
+			fileWriter.write(((JSONAware) object1).toJSONString());
 			fileWriter.flush();
 			fileWriter.close();
 
 		}
 	}
+	@SuppressWarnings("unchecked")
 	public static void Buy() throws IOException, ParseException {
-		File file = new File(
-				"/home/bridgeit/Java-Programes/OOPS_Programes/src/com/bridgelabz/programes/userDetails.json");
-		File file1 = new File(
-				"/home/bridgeit/Java-Programes/OOPS_Programes/src/com/bridgelabz/programes/stockSymbols.json");
-		if (file.exists() && file1.exists()) {
+		
+		File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/userDetails.json");
+		
+		File file1 = new File(	"/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/stockSymbols.json");
+		
+		if (file.exists() && file1.exists())
+		{
 			// reading stock file
-			FileReader fr = new FileReader(file);
+			
+			FileReader fileReader = new FileReader(file);
 			JSONParser parser = new JSONParser();
-			JSONArray stock = (JSONArray) parser.parse(fr);
+			JSONArray stock = (JSONArray) parser.parse(fileReader);
+			
 			// reading share file
 
-			FileReader sf = new FileReader(file1);
+			FileReader fileReader2 = new FileReader(file1);
 			JSONParser parser1 = new JSONParser();
-			JSONArray share = (JSONArray) parser1.parse(sf);
-
-			System.out.println("Enter the user");
+			JSONArray share = (JSONArray) parser1.parse(fileReader2);
+			
+			System.out.println("********** @ Buy Shares @ *********");
+			System.out.println();
+			
+			System.out.println("Enter user name");
 			String name = Utility.getString();
 			Iterator<?> itr = ((List<Integer>) stock).iterator();
 			Iterator<?> itr1 = ((List<Integer>) share).iterator();
 			boolean flag = false;
-			while (itr.hasNext()) {
-				JSONObject obj = (JSONObject) itr.next();
-				if (obj.get("user_Name").equals(name)) {
+			
+			while (itr.hasNext())
+			{
+				JSONObject jsonObject = (JSONObject) itr.next();
+				if (jsonObject.get("user_Name").equals(name))
+				{
 					System.out.println("Enter the share sysmbol to buy share:[@,!,#]");
-					String sym = Utility.getString();
+					String symbol = Utility.getString();
 
-					while (itr1.hasNext()) {
-						JSONObject obj1 = (JSONObject) itr1.next();
-						if (obj1.get("stock_Symbol").equals(sym)) {
-							System.out.println("Enter the amount");
-							int amt = scan.nextInt();
-							int bal = Integer.parseInt(obj.get("amount").toString());
-							int price = Integer.parseInt(obj1.get("amount").toString());
-							int noShare = Integer.parseInt(obj.get("number_Share").toString());
-							int stockShare = Integer.parseInt(obj1.get("Count").toString());
-							int numofshare = amt / price;
-							int newbal = bal - amt;
-							int sharecountcus = noShare + numofshare;
+					while (itr1.hasNext())
+					{
+						JSONObject jsonObject2 = (JSONObject) itr1.next();
+						if (jsonObject2.get("stock_Symbol").equals(symbol))
+						{
+							System.out.println(" Enter the amount to buy the shares");
+							int ammount = Utility.getInt();
+							
+							int balalnce = Integer.parseInt(jsonObject.get("amount").toString());
+							int price = Integer.parseInt(jsonObject2.get("amount").toString());
+							int numberShare = Integer.parseInt(jsonObject.get("number_Share").toString());
+							int stockShare = Integer.parseInt(jsonObject2.get("Count").toString());
+							
+							int numofshare = ammount / price;
+							int newbalalnce = balalnce - ammount;
+							int sharecountcus = numberShare + numofshare;
 							int sharecountstock = stockShare - numofshare;
-							obj.remove("amount");
-							obj.remove("number_Share");
-							obj1.remove("Count");
+							jsonObject.remove("amount");
+							jsonObject.remove("number_Share");
+							jsonObject.remove("Count");
 
-							obj.put("amount", newbal);
-							obj.put("number_Share", sharecountcus);
-							obj1.put("Count", sharecountstock);
+							jsonObject.put("amount", newbalalnce);
+							jsonObject.put("number_Share", sharecountcus);
+							jsonObject2.put("Count", sharecountstock);
 
 							flag = true;
 							break;
 						}
 					}
-
+					System.out.println();
+					System.out.println("You buy shares successfully");
+					System.out.println();
+					System.out.println();
 				}
-				FileWriter fs = new FileWriter(file);
-				fs.write(JSONValue.toJSONString(stock));
-				fs.flush();
-				fs.close();
+				FileWriter fileWriter = new FileWriter(file);
+				fileWriter.write(JSONValue.toJSONString(stock));
+				fileWriter.flush();
+				fileWriter.close();
 			}
-			if (flag == false) {
-				System.out.println("User name not exits");
+			
+			Queue queue = new Queue();
+			Stack1 stack1 = new Stack1();
+			long time = System.currentTimeMillis();
+			java.util.Date date = new java.util.Date(time);
+			queue.enqueue(date);
+			queue.print();
+			System.out.println();
+			System.out.println("----------------------------------");
+			if (flag == false)
+			{
+				System.out.println("User name is not exits");
 			}
 			FileWriter fw = new FileWriter(file1);
 			fw.write(JSONValue.toJSONString(share));
@@ -1509,14 +1562,21 @@ public class Utility {
 			System.out.println("File does not exits");
 		}
 	}
+	
+	
+	/**
+	 * This method is used to sell the shares.
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	@SuppressWarnings("unchecked")
 	public static void sell() throws IOException, ParseException {
 
-		File file = new File(
-				"/home/bridgeit/Java-Programes/OOPS_Programes/src/com/bridgelabz/programes/userDetails.json");
-		File file1 = new File(
-				"/home/bridgeit/Java-Programes/OOPS_Programes/src/com/bridgelabz/programes/stockSymbols.json");
+		File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/userDetails.json");
+		
+		File file1 = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/stockSymbols.json");
 		if (file.exists() && file1.exists()) {
-			Scanner scan = new Scanner(System.in);
+			
 			// reading stock file
 			FileReader fr = new FileReader(file);
 			JSONParser parser = new JSONParser();
@@ -1526,38 +1586,44 @@ public class Utility {
 			FileReader sf = new FileReader(file1);
 			JSONParser parser1 = new JSONParser();
 			JSONArray share = (JSONArray) parser1.parse(sf);
-
-			System.out.println("Enter the user");
-			String name = scan.nextLine();
+			
+			System.out.println();
+			System.out.println("**** @ Sell Shares @ ****");
+			System.out.println();
+			System.out.println("Enter the user name");
+			String name = Utility.getString();
 			Iterator<?> itr = ((List<Integer>) stock).iterator();
 			Iterator<?> itr1 = ((List<Integer>) share).iterator();
 			boolean flag = false;
-			while (itr.hasNext()) {
+			while (itr.hasNext())
+			{
 				JSONObject obj = (JSONObject) itr.next();
-				if (obj.get("user_Name").equals(name)) {
-					System.out.println("Enter the share sysmbol to buy share:[@,!,#]");
-					String sym = scan.nextLine();
-					/*
-					 * obj.put("Share symbol", sym); if(obj.get("Share Symbol"
-					 * ).equals(sym)) {
-					 */
-					while (itr1.hasNext()) {
+				if (obj.get("user_Name").equals(name)) 
+				{
+					System.out.println("Enter the share symbol to sell share:[@,!,#]");
+					String sym = Utility.getString();
+					
+					while (itr1.hasNext())
+					{
 						JSONObject obj1 = (JSONObject) itr1.next();
-						if (obj1.get("stock_Symbol").equals(sym)) {
+						if (obj1.get("stock_Symbol").equals(sym))
+						{
 							System.out.println("Enter the amount");
-							int amt = scan.nextInt();
+							int ammount = Utility.getInt();
+							
 							int bal = Integer.parseInt(obj.get("amount").toString());
 							int price = Integer.parseInt(obj1.get("amount").toString());
 							int noShare = Integer.parseInt(obj.get("number_Share").toString());
 							int stockShare = Integer.parseInt(obj1.get("Count").toString());
-							int numofshare = amt / price;
-							int newbal = bal + amt;
+							
+							int numofshare = ammount / price;
+							int newbal = bal + ammount;
 							int sharecountcus = noShare - numofshare;
 							int sharecountstock = stockShare + numofshare;
+							
 							obj.remove("amount");
 							obj.remove("number_Share");
 							obj1.remove("Count");
-
 							obj.put("amount", newbal);
 							obj.put("number_Share", sharecountcus);
 							obj1.put("Count", sharecountstock);
@@ -1566,10 +1632,11 @@ public class Utility {
 							break;
 						}
 					}
-					// }
-					/*
-					 * else { obj.put("Share symbol", sym); flag= true; }
-					 */
+					System.out.println();
+					System.out.println("Your shares sell successfully");
+					System.out.println();
+					System.out.println("---------------------------------------");
+					System.out.println();
 				}
 				FileWriter fs = new FileWriter(file);
 				fs.write(JSONValue.toJSONString(stock));
@@ -1582,19 +1649,28 @@ public class Utility {
 			FileWriter fw = new FileWriter(file1);
 			fw.write(JSONValue.toJSONString(share));
 			fw.flush();
-			fw.close();
-		} else {
+			fw.close();		
+		} else
+		{
 			System.out.println("File does not exits");
 		}
-
 	}
+	
+	/** This method is used to display shares records.
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static void display() throws IOException, ParseException {
 
-		FileReader reader1 = new FileReader(
-				"/home/bridgeit/Java-Programes/OOPS_Programes/src/com/bridgelabz/programes/userDetails.json");
+		
+		FileReader reader1 = new FileReader("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/userDetails.json");
+		
 		JSONParser jsonParser1 = new JSONParser();
 		JSONArray jsonArrays_StackDtails = (JSONArray) jsonParser1.parse(reader1);
-		for (Object o1 : jsonArrays_StackDtails) {
+		
+		System.out.println("**** @ User Details @ ****");
+		for (Object o1 : jsonArrays_StackDtails) 
+		{
 			JSONObject jsonDetails2 = (JSONObject) o1;
 			String name = (String) jsonDetails2.get("user_Name");
 			System.out.println("User Name: " + name);
@@ -1607,8 +1683,12 @@ public class Utility {
 
 			System.out.println("-----------------------------------------");
 		}
-
 	}
+	
+	
+	/**
+	 * This method is used to add doctors in JSON file.
+	 */
 	@SuppressWarnings("unchecked")
 	public void addDoctors() 
 	{
@@ -1652,6 +1732,10 @@ public class Utility {
 
 
 	}
+	
+	/**
+	 *  This method is used to add patient in JSON file.
+	 */
 	@SuppressWarnings("unchecked")
 	public void addPatient() {
 
@@ -1686,16 +1770,17 @@ public class Utility {
 				jsonFileWriter.flush();
 				jsonFileWriter.close();
 				System.out.println("Pateint Added: " + jsonArray);
-			} catch (IOException e) {
+			} catch (IOException e) 
+			{
 				e.printStackTrace();
 			}
-
-
 		}
-
-
-
 	}
+	
+	
+	/**
+	 *  This method is used to search doctors from JSON file.
+	 */
 	public void searchDoctor() {
 
 		try {
@@ -1706,46 +1791,60 @@ public class Utility {
 			String searchDoctor = Utility.getString();
 			Iterator<?> itr = jsonArray.iterator();
 
-			while (itr.hasNext()) {
+			while (itr.hasNext())
+			{
 				JSONObject object = (JSONObject) itr.next();
 				String string = (String) object.get("Doctor_Name");
-				if (searchDoctor.equals(string)) {
+				if (searchDoctor.equals(string))
+				{
 					System.out.println("Doctor_founded" + object);
-				} else {
+				} else
+				{
 					System.out.println("Not Found !");
 				}
 			}
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 		}
-
-
-
 	}
+	
+	
+	/**
+	 * This method is used to search patient from JSON file.
+	 */
 	public void searchPatient() {
 
 		System.out.println("Enter Name Of Patient");
 		String searchPatient = Utility.getString();
 		try {
 			JSONParser parser = new JSONParser();
-			JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(
-					"/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addPatient.json"));
+			JSONArray jsonArray = (JSONArray) parser.parse(new FileReader("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addPatient.json"));
 			Iterator<?> itr = jsonArray.iterator();
-			while(itr.hasNext()){
-
+			
+			while(itr.hasNext())
+			{
 				JSONObject jsonobject = (JSONObject) itr.next();
 				String string = (String) jsonobject.get("Patient_Name");
-				if (searchPatient.equals(string)) {
+				
+				if (searchPatient.equals(string))
+				{
 					System.out.println("Patient_found " + jsonobject);
-				} else {
+				} else 
+				{
 					System.out.println("Not found !");
 				}
 			}
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			System.out.println(e);
 		}
-
 	}
+	
+	
+	/**
+	 * This method is used to take appointment.
+	 */
 	@SuppressWarnings("unchecked")
 	public void takeAnAppointment() {
 
@@ -1872,7 +1971,7 @@ public class Utility {
 					while (iterator.hasNext()) 
 					{
 						JSONObject temporary = (JSONObject) iterator.next();
-						if (temporary.get("Name").equals(name))
+						if (((String) temporary.get("Name")).equalsIgnoreCase(name))
 						{
 							System.out.println("***************** Detail Information of "+name+" ***************");
 							System.out.println();
@@ -1885,6 +1984,9 @@ public class Utility {
 				} 
 				else if (j == 2)
 				{
+					System.out.println();
+					System.out.println("******* Edit Your Information *******");
+					System.out.println();
 					System.out.println("Enter Name to Edit");
 					String keyName = Utility.getString();
 					Iterator iterat1 = jsonArray.iterator();
@@ -1893,7 +1995,8 @@ public class Utility {
 					while (iterat1.hasNext())
 					{
 						JSONObject temporary = (JSONObject) iterat1.next();
-						if (temporary.get("Name").equals(keyName))
+						
+						if (((String) temporary.get("Name")).equalsIgnoreCase(keyName))
 						{
 							found = true;
 							jsonArray.remove(temporary);
@@ -1908,12 +2011,27 @@ public class Utility {
 							int numberCheck = Utility.getInt();
 							obj.put("Number", numberCheck);
 							jsonArray.add(obj);
+							
+							System.out.println();
+							System.out.println("Information updated successfuly..... Thanku ");
+							System.out.println();
 						}
-					
+						
+						try {
+							PrintWriter print = new PrintWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addressBook.json");
+							print.print(jsonArray.toJSONString());
+							print.close();
+							
+						
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						}
+						
 					}
 					if (found == false) 
 					{
 						System.out.println("Name not found.... Please Try again.....");
+						System.out.println();
 					}
 					
 				} else if (j == 3) 

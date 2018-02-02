@@ -1,0 +1,12 @@
+package com.bridgelabz.utility;
+
+public class LinkedList {
+
+	ListNode head;
+	public void insertbegin(int data){
+		
+		ListNode node = new ListNode(data);
+		node.next = head;
+		head = node;
+	}
+}

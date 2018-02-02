@@ -1,9 +1,0 @@
-package objectorientedprog;
-
-public class SimpleJson {
-
-	public static void main(String[] args) {
-
-	}
-
-}

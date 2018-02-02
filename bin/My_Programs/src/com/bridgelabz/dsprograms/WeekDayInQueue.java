@@ -51,7 +51,7 @@ public class WeekDayInQueue {
 				}
 			}
 			
-		//	queue.enqueue(i);
+			queue.enqueue(i);
 			queue.print();
 			if(((i + d) % 7 == 0) || (i == days[month])) 
 			{
@@ -60,14 +60,14 @@ public class WeekDayInQueue {
 			
 		}
 		
-		for(int j=0; j<6; j++){
-			
-			for(int k=0; k<7; k++){
-				
-				System.out.print(array[j][k]+" ");
-			}
-			System.out.println();
-		}
+//		for(int j=0; j<6; j++){
+//			
+//			for(int k=0; k<7; k++){
+//				
+//				System.out.print(array[j][k]+" ");
+//			}
+//			System.out.println();
+//		}
 		
 	}
 		
