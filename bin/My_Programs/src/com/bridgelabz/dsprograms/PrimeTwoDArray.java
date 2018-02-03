@@ -4,9 +4,10 @@ public class PrimeTwoDArray {
 	
 	public static void main(String[] args) 
 	{
-		int a[][]=new int[10][];
+		int array[][]=new int[10][];
 		int initial=1,temp=100;
 		int i,j,k;
+		
 		System.out.println("prime numbers are");
 		for(i=0; i<10; i++)
 		{
@@ -27,7 +28,7 @@ public class PrimeTwoDArray {
 					size++;
 				}
 			}
-			a[i]=new int[size];
+			array[i]=new int[size];
 			j=0;
 			int m;
 			for(m=initial; m<temp; m++)
@@ -44,8 +45,8 @@ public class PrimeTwoDArray {
 				
 				if(temp1==true)
 				{
-					a[i][j]=m;
-					System.out.print(a[i][j]+"\t");
+					array[i][j]=m;
+					System.out.print(array[i][j]+"\t");
 					j++;
 				}
 			}

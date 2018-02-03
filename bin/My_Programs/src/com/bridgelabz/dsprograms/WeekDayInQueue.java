@@ -1,7 +1,5 @@
 package com.bridgelabz.dsprograms;
 
-import java.util.Scanner;
-
 import com.bridgelabz.utility.Queue;
 import com.bridgelabz.utility.Utility;
 
@@ -11,12 +9,11 @@ public class WeekDayInQueue {
 		
 		Utility utility = new Utility();
 		Queue queue = new Queue();
-		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter month");
-		int month = scanner.nextInt();
+		int month = Utility.getInt();
 		
 		System.out.println("Enter year");
-		int year = scanner.nextInt();
+		int year = Utility.getInt();
 		
 		int[][] array = new int[6][7];
 		String months[] ={"","January","February","March","April","May","June","July","August","September",
@@ -36,7 +33,6 @@ public class WeekDayInQueue {
 //		System.out.println("--------------------");
 //		
 		int d = Utility.day(month, 1, year);
-		
 		for (int i = 0; i < d; i++)
 		{
 			System.out.print("   ");
@@ -49,16 +45,17 @@ public class WeekDayInQueue {
 				{
 					array[j][k] = i;
 				}
+				
 			}
-			
-			queue.enqueue(i);
-			queue.print();
 			if(((i + d) % 7 == 0) || (i == days[month])) 
 			{
 				System.out.println();
 			}
-			
+			queue.enqueue(i);
+			queue.print();
+		
 		}
+		
 		
 //		for(int j=0; j<6; j++){
 //			

@@ -5,8 +5,20 @@ import java.util.EmptyStackException;
 import com.bridgelabz.utility.ListNode;
 
 public class Stack1 {
+	
+		public class Node{
+			
+			public String data;
+			public Node next;
+			
+			public Node(String data){
+				
+				this.data = data;
+				this.next = null;
+			}
+		}
 		
-		public ListNode top;
+		public Node top;
 		int length;
 		
 		public int length(){
@@ -15,23 +27,23 @@ public class Stack1 {
 		public boolean isEmpty(){
 			return length == 0;	
 		}
-		public void push(int data){
+		public void push(String symbol){
 			
-			ListNode temp = new ListNode(data);
+			Node temp = new Node(symbol);
 			temp.next = top;
 			top = temp;
 			length++;
 		}
-		public int pop(){
+		public String pop(){
 			if(isEmpty()) {
 				throw new EmptyStackException();
 			}
-			int result = top.data;
+			String result = top.data;
 			top = top.next;
 			length--;
 			return result;	
 		}
-		public int peek()
+		public String peek()
 		{
 			if(isEmpty()){
 				throw new EmptyStackException();	
@@ -46,19 +58,20 @@ public class Stack1 {
 				throw new EmptyStackException();
 			}
 		}
-		public void print()
+		public String print()
 		{
 			if(isEmpty())
 			{
-				return;
+				return null;
 			}
 
-			ListNode current = top;
+			Node current = top;
 			while(current!= null)
 			{
-				System.out.print(current.data + "--> ");
+				System.out.print(current.data+" todo");
 				current = current.next;
 			}
+			return null;
 		}
 		
 	}

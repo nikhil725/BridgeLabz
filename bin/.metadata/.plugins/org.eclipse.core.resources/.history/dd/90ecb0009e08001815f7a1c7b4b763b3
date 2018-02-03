@@ -1,0 +1,16 @@
+package com.bridgelabz.objectorientedprog;
+
+
+public class ListNodeStack {
+	
+	public String data;
+	public ListNodeStack nextChar;
+	
+	public void ListNode(String data){
+		
+		this.data = data;
+		this.nextChar = null;
+	}
+
+
+}

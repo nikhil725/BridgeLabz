@@ -6,43 +6,39 @@ import java.util.Scanner;
 
 import javax.xml.namespace.QName;
 
+import com.bridgelabz.utility.Utility;
+
 public class BankCounter {
 
 	public static void main(String[] args) {
 		
-		Scanner scanner = new Scanner(System.in);
-		
+		Utility utility = new Utility();
 		System.out.println("Enter the number of people waiting in queue");
-		int number =scanner.nextInt();
-		
+		int number = Utility.getInt();
 		
 		int balance,Acno;
 		String name;
-		
 		Queue<String> queue = new LinkedList<String>();
 		
 		for(int i=0; i<number; i++ ){
 			
-		
-		System.out.println("Enter Name");
-		name = scanner.next();
+		System.out.println("Enter First Name");
+		name = Utility.getString();
 		queue.add(name);
 		
-		System.out.println("Enter A/C No");
-		Acno = scanner.nextInt();
+		System.out.println("Enter A/C Number");
+		Acno = Utility.getInt();
 		queue.add(Integer.toString(Acno));
 		
 		System.out.println("Enter Balance");
-		balance = scanner.nextInt();
+		balance = Utility.getInt();
 		queue.add(Integer.toString(balance));
 	
 	}
 		while(queue.size()>0)
 		{
-			//System.out.println(" "+q.peek()+" your turn");
-		
-			Bank b=new Bank(queue.poll(),Integer.parseInt(queue.poll()),Integer.parseInt(queue.poll()));
-			b.process();
+			Bank bank = new Bank(queue.poll(),Integer.parseInt(queue.poll()),Integer.parseInt(queue.poll()));
+			bank.process();
 		}
 
 }

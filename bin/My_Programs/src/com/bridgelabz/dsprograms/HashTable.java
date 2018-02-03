@@ -7,15 +7,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * @purpose: This program is Create a Slot of 10 to store Chain of Numbers that belong to each Slot to efficiently search a number
+ * 			 from a given set of number.
+ * @author:  Nikhil Vaidya.
+ * @version: 1.0 
+ * @date :  25/01/2018
+ *
+ */
 public class HashTable {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) throws IOException {
 			
-		Scanner scanner = new Scanner(System.in);
 		Utility utility = new Utility();
 		File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/dsprograms/hashtable.txt");
 		BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -32,17 +39,17 @@ public class HashTable {
 		}
 		
 		HashMap hashmap = new HashMap();
-		LinkedList ll0 = new LinkedList();
-		LinkedList ll1 = new LinkedList();
-		LinkedList ll2 = new LinkedList();
-		LinkedList ll3 = new LinkedList();
-		LinkedList ll4 = new LinkedList();
-		LinkedList ll5 = new LinkedList();
-		LinkedList ll6 = new LinkedList();
-		LinkedList ll7 = new LinkedList();
-		LinkedList ll8 = new LinkedList();
-		LinkedList ll9 = new LinkedList();
-		LinkedList ll10 = new LinkedList();
+		LinkedList linkedList0 = new LinkedList();
+		LinkedList linkedList1 = new LinkedList();
+		LinkedList linkedList2 = new LinkedList();
+		LinkedList linkedList3 = new LinkedList();
+		LinkedList linkedList4 = new LinkedList();
+		LinkedList linkedList5 = new LinkedList();
+		LinkedList linkedList6 = new LinkedList();
+		LinkedList linkedList7 = new LinkedList();
+		LinkedList linkedList8 = new LinkedList();
+		LinkedList linkedList9 = new LinkedList();
+		LinkedList linkedList10 = new LinkedList();
 		
 		for(Integer element : intArray){
 			
@@ -51,65 +58,65 @@ public class HashTable {
 			switch(remender){
 			
 			case 0:
-				ll0.add(element);
-				hashmap .put(remender, ll0);
+				linkedList0.add(element);
+				hashmap .put(remender, linkedList0);
 				break;
 				
 			case 1:
-				ll1.add(element);
-				hashmap.put(remender, ll1);
+				linkedList1.add(element);
+				hashmap.put(remender, linkedList1);
 				break;
 			
 			case 2:
-				ll2.add(element);
-				hashmap.put(remender, ll2);
+				linkedList2.add(element);
+				hashmap.put(remender, linkedList2);
 				break;
 				
 			case 3:
-				ll4.add(element);
-				hashmap.put(remender, ll3);
+				linkedList3.add(element);
+				hashmap.put(remender, linkedList3);
 				break;
 				
 			case 4:
-				ll4.add(element);
-				hashmap.put(remender, ll4);
+				linkedList4.add(element);
+				hashmap.put(remender, linkedList4);
 				break;
 				
 			case 5:
-				ll5.add(element);
-				hashmap.put(remender, ll5);
+				linkedList5.add(element);
+				hashmap.put(remender, linkedList5);
 				break;
 				
 			case 6:
-				ll6.add(element);
-				hashmap.put(remender, ll6);
+				linkedList6.add(element);
+				hashmap.put(remender, linkedList6);
 				break;
 				
 			case 7:
-				ll7.add(element);
-				hashmap.put(remender, ll7);
+				linkedList7.add(element);
+				hashmap.put(remender, linkedList7);
 				break;
 				
 			case 8:
-				ll8.add(element);
-				hashmap.put(remender, ll8);
+				linkedList8.add(element);
+				hashmap.put(remender, linkedList8);
 				break;
 				
 			case 9:
-				ll9.add(element);
-				hashmap.put(remender, ll9);
+				linkedList9.add(element);
+				hashmap.put(remender, linkedList9);
 				break;
 				
 			case 10:
-				ll10.add(element);
-				hashmap.put(remender, ll0);
+				linkedList10.add(element);
+				hashmap.put(remender, linkedList10);
 				break;
 			}
 		}
 		
 		System.out.println(hashmap);
 		System.out.println("Enter number");
-		int number = scanner.nextInt();
+		int number = Utility.getInt();
 		int remainder = number % 11;
 		
 		String string = "";
@@ -117,71 +124,71 @@ public class HashTable {
 		switch (remainder) {
 		case 0:
 			
-			ll0 = utility.serachMethod(ll0, number, 0);
-			hashmap.put(remainder, ll0);	
+			linkedList0 = utility.serachMethod(linkedList0, number, 0);
+			hashmap.put(remainder, linkedList0);	
 			break;
 		
 		case 1:
-			ll1 = utility.serachMethod(ll1, number, 0);
-			hashmap.put(remainder, ll1);
+			linkedList1 = utility.serachMethod(linkedList1, number, 0);
+			hashmap.put(remainder, linkedList1);
 			break;
 			
 		case 2:
-			ll2 = utility.serachMethod(ll2, number, 0);
-			hashmap.put(remainder, ll2);
+			linkedList2 = utility.serachMethod(linkedList2, number, 0);
+			hashmap.put(remainder, linkedList2);
 			break;
 			
 		case 3:
-			ll3 = utility.serachMethod(ll3, number, 0);
-			hashmap.put(remainder, ll3);
+			linkedList3 = utility.serachMethod(linkedList3, number, 0);
+			hashmap.put(remainder, linkedList3);
 			break;
 			
 		case 4:
-			ll4 = utility.serachMethod(ll4, number, 0);
-			hashmap.put(remainder, ll4);
+			linkedList4 = utility.serachMethod(linkedList4, number, 0);
+			hashmap.put(remainder, linkedList4);
 			break;
 			
 		case 5:
-			ll5 = utility.serachMethod(ll5, number, 0);
-			hashmap.put(remainder, ll5);
+			linkedList5 = utility.serachMethod(linkedList5, number, 0);
+			hashmap.put(remainder, linkedList5);
 			break;
 			
 		case 6:
-			ll6 = utility.serachMethod(ll6, number, 0);
-			hashmap.put(remainder, ll6);
+			linkedList6 = utility.serachMethod(linkedList6, number, 0);
+			hashmap.put(remainder, linkedList6);
 			break;
 			
 		case 7:
-			ll7 = utility.serachMethod(ll7, number, 0);
-			hashmap.put(remainder, ll7);
+			linkedList7 = utility.serachMethod(linkedList7, number, 0);
+			hashmap.put(remainder, linkedList7);
 			break;
 			
 		case 8:
-			ll8 = utility.serachMethod(ll8, number, 0);
-			hashmap.put(remainder, ll8);
+			linkedList8 = utility.serachMethod(linkedList8, number, 0);
+			hashmap.put(remainder, linkedList8);
 			break;
 			
 		case 9:
-			ll9 = utility.serachMethod(ll9, number, 0);
-			hashmap.put(remainder, ll9);
+			linkedList9 = utility.serachMethod(linkedList9, number, 0);
+			hashmap.put(remainder, linkedList9);
 			break;
 			
 		case 10:
-			ll10 = utility.serachMethod(ll10, number, 0);
-			hashmap.put(remainder, ll2);
+			linkedList10 = utility.serachMethod(linkedList10, number, 0);
+			hashmap.put(remainder, linkedList10);
 			break;
 		}
 		
-		string = ll0 +" "+ll1+" "+ll2+" "+ll3+" "+ll4+" "+ll5+" "+ll6+" "+ll7+" "+ll8+" "+ll9+" "+ll10;
+		string = linkedList0 +" "+linkedList1+" "+linkedList2+" "+linkedList3+" "+linkedList4+" "+linkedList5+" "+linkedList6+" "+linkedList7+" "+linkedList8+" "+linkedList9+" "+linkedList10;
 		
 		string = string.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\,", "").replaceAll("( )+", " ");
 		
-		FileWriter fw = new FileWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/dsprograms/hashtable.txt");
-		fw.write(string);
-		fw.flush();
-		fw.close();
+		FileWriter fileWriter = new FileWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/dsprograms/hashtable.txt");
+		fileWriter.write(string);
+		fileWriter.flush();
+		fileWriter.close();
 		System.out.println(hashmap);
-		scanner.close();
+		bufferedReader.close();
 	}
 
 }

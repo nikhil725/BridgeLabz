@@ -2,8 +2,8 @@ package com.bridgelabz.dsprograms;
 
 import com.bridgelabz.utility.Queue;
 
-/**@purpose: This program add the Prime Numbers that are Anagram in the Range of 0 - 1000 in a Stack
- *			 using the Linked List and Print the Anagrams in the Reverse Order.
+/**@purpose: This program add the Prime Numbers that are Anagram in the Range of 0 - 1000 in a Queue
+ *			 using the Linked List.
  * @author : Nikhil Vaidya
  * @version: 1.0
  * @since  : 22/01/2018 
@@ -16,7 +16,7 @@ public class AnagramInQueue
 		Queue queue = new Queue();
 
 		int count=0;
-		for(int i=1; i<1000; i++)
+		for(int i=11; i<1000; i++)
 		{
 			boolean temp=true;
 			for(int j=2; j<i; j++)
@@ -27,10 +27,6 @@ public class AnagramInQueue
 					break;
 				}
 			}
-			if(i<11)				
-			{				
-				continue;
-			}
 			if(temp==true)
 			{
 				count++;
@@ -40,7 +36,7 @@ public class AnagramInQueue
 		int arr1[]=new int[count];
 		int arr2[]=new int[count];
 		int n=0;
-		for(int i=1; i<1000; i++)
+		for(int i=11; i<1000; i++)
 		{
 			boolean temp=true;
 			for(int j=2; j<i; j++)
@@ -54,10 +50,6 @@ public class AnagramInQueue
 			if(temp==true)
 			{
 				arr1[n]=i;
-				if(i<11)
-				{
-					continue;
-				}
 				int m=i;
 				int sum=0,rem;
 				while(m>0)
@@ -70,13 +62,14 @@ public class AnagramInQueue
 				n++;
 			}
 		}
-		for(int i : arr2){
-			System.out.print(i+" ");
-			
+		for(int i : arr2)
+		{
+			System.out.print(i+" ");	
 		}
 		System.out.println();
 		
-		for(int i : arr1){
+		for(int i : arr1)
+		{
 			System.out.print(i+" ");
 			
 		}

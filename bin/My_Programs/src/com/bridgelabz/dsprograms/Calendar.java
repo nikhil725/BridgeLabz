@@ -1,7 +1,5 @@
 package com.bridgelabz.dsprograms;
 
-import java.util.Scanner;
-
 import com.bridgelabz.utility.Utility;
 
 
@@ -14,6 +12,7 @@ import com.bridgelabz.utility.Utility;
 
 public class Calendar {
 	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		Utility utility = new Utility();	

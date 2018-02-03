@@ -336,10 +336,10 @@ public class Utility {
 
 	public void parenthesis(String exp, Stack<Integer> stk)
 	{
-		int len = exp.length();
+		int length = exp.length();
 
 		System.out.println("\nMatches and Mismatches:\n");
-		for (int i = 0; i < len; i++) 
+		for (int i = 0; i < length; i++) 
 		{
 			char ch = exp.charAt(i);
 			if (ch == '(')
@@ -956,8 +956,10 @@ public class Utility {
 			System.out.println("Enter the String to search...");
 			String search = scanner.next();
 
-			for (int i = 0; i < linkedList.size(); i++) {
-				if (linkedList.get(i).equals(search)) {
+			for (int i = 0; i < linkedList.size(); i++) 
+			{
+				if (linkedList.get(i).equals(search)) 
+				{
 					linkedList.remove(i);
 					mark = true;
 				}
@@ -1507,7 +1509,7 @@ public class Utility {
 						JSONObject jsonObject2 = (JSONObject) itr1.next();
 						if (jsonObject2.get("stock_Symbol").equals(symbol))
 						{
-							System.out.println(" Enter the amount to buy the shares");
+							System.out.println("Enter the amount to buy the shares");
 							int ammount = Utility.getInt();
 							
 							int balalnce = Integer.parseInt(jsonObject.get("amount").toString());
@@ -1519,6 +1521,7 @@ public class Utility {
 							int newbalalnce = balalnce - ammount;
 							int sharecountcus = numberShare + numofshare;
 							int sharecountstock = stockShare - numofshare;
+							
 							jsonObject.remove("amount");
 							jsonObject.remove("number_Share");
 							jsonObject.remove("Count");
@@ -1532,9 +1535,8 @@ public class Utility {
 						}
 					}
 					System.out.println();
-					System.out.println("You buy shares successfully");
-					System.out.println();
-					System.out.println();
+					System.out.println("You buy shares successfully on... ");
+				//	System.out.println();
 				}
 				FileWriter fileWriter = new FileWriter(file);
 				fileWriter.write(JSONValue.toJSONString(stock));
@@ -1549,6 +1551,7 @@ public class Utility {
 			queue.enqueue(date);
 			queue.print();
 			System.out.println();
+			
 			System.out.println("----------------------------------");
 			if (flag == false)
 			{
@@ -1577,11 +1580,11 @@ public class Utility {
 		File file1 = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/stockSymbols.json");
 		if (file.exists() && file1.exists()) {
 			
-			// reading stock file
+			
+			
 			FileReader fr = new FileReader(file);
 			JSONParser parser = new JSONParser();
 			JSONArray stock = (JSONArray) parser.parse(fr);
-			// reading share file
 
 			FileReader sf = new FileReader(file1);
 			JSONParser parser1 = new JSONParser();
@@ -1600,13 +1603,13 @@ public class Utility {
 				JSONObject obj = (JSONObject) itr.next();
 				if (obj.get("user_Name").equals(name)) 
 				{
-					System.out.println("Enter the share symbol to sell share:[@,!,#]");
-					String sym = Utility.getString();
+					System.out.println("Enter the share symbol to sell share:[@,#,!]");
+					String symbol = Utility.getString();
 					
 					while (itr1.hasNext())
 					{
 						JSONObject obj1 = (JSONObject) itr1.next();
-						if (obj1.get("stock_Symbol").equals(sym))
+						if (obj1.get("stock_Symbol").equals(symbol))
 						{
 							System.out.println("Enter the amount");
 							int ammount = Utility.getInt();
@@ -1632,19 +1635,31 @@ public class Utility {
 							break;
 						}
 					}
+					
 					System.out.println();
-					System.out.println("Your shares sell successfully");
+					System.out.println("Your shares sell successfully on...");
+				
+					Queue queue = new Queue();
+					Stack1 stack1 = new Stack1();
+					long time = System.currentTimeMillis();
+					java.util.Date date = new java.util.Date(time);
+					queue.enqueue(date);
+					queue.print();
+					stack1.push(symbol);
+					System.out.println();
+					System.out.println("Shares symbol is: ");
+					stack1.print();
 					System.out.println();
 					System.out.println("---------------------------------------");
 					System.out.println();
 				}
-				FileWriter fs = new FileWriter(file);
-				fs.write(JSONValue.toJSONString(stock));
-				fs.flush();
-				fs.close();
+				FileWriter fileWriter = new FileWriter(file);
+				fileWriter.write(JSONValue.toJSONString(stock));
+				fileWriter.flush();
+				fileWriter.close();
 			}
 			if (flag == false) {
-				System.out.println("User name not exits");
+				System.out.println("User name not fond");
 			}
 			FileWriter fw = new FileWriter(file1);
 			fw.write(JSONValue.toJSONString(share));

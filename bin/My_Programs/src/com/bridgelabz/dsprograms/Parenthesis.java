@@ -11,7 +11,7 @@ public class Parenthesis {
 		Utility utility = new Utility();
 		System.out.println("Enter Expression");
 		Stack<Integer> stack = new Stack<Integer>();
-		String expression = utility.getString();
+		String expression = Utility.getString();
 		utility.parenthesis(expression, stack);
 	}
 
