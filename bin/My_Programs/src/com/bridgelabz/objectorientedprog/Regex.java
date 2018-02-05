@@ -1,4 +1,5 @@
 package com.bridgelabz.objectorientedprog;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,104 +15,102 @@ import com.bridgelabz.utility.Utility;
  */
 public class Regex {
 
-	Utility utility = new Utility();
-	String message="Hii <<Name>>, We have your full name as <<Full Name>> in our system. your contact number is 91-xxxxxxxxxx. Please,let us know in case of any clarification Thank you BridgeLabz 01/01/2016.";
-	private String firstName;
-	private String lastName;
-	private String mobileNumber="0";
+	Scanner sc=new Scanner(System.in);
+	String message="Hello <<Name>>, We have your full name as <<Full Name>> in our system. your contact number is 91-xxxxxxxxxx. Please,let us know in case of any clarification Thank you BridgeLabz 01/01/2016.";
+	private String FName;
+	private String LName;
+	private String MNumber="0";
 	private String date;
 
-	public static void main( String args[] ) {
-
-		Regex regex =new Regex();
-
-		regex.setFirstName();
-
-		regex.setLastName();	
-
-		regex.setMobileNumber();
-
-		regex.setDate();
-
-		String regixs=regex.RegexReplace();
-
-		System.out.println(regixs);
-
-	}
-	public void setFirstName() 
-	{
+	public void setFirstName() {
 		System.out.println("Enter The First Name :");
-		firstName= Utility.getString();
+		FName=sc.next();
+		
 	}
 
-	public void setLastName()
-	{
+	public void setLastName() {
 		System.out.println("Enter The Last Name :");
-		lastName = Utility.getString();
+		LName=sc.next();
 	}
 
-	public void setMobNumber(){
-		System.out.println("Enter The Mobile Number :");
-		mobileNumber = Utility.getString();
-	}
 
 	public void setMobileNumber() {
 
-		while(!isTenDigit(mobileNumber)){	
+		while(!isTenDigit(MNumber)){	
 			System.out.println("Enter The Mobile Number :");
-			mobileNumber = Utility.getString();
+			MNumber=sc.next();
 		}
 	}
 
-	public boolean isTenDigit(String number) {
-		if((number.length())==10&&number.contains("[a-zA-Z]+") == false){
-			return true;
-		}
-		else{
-			return false;
-		}
 
-
-	}
-	public void setDate() 
-	{
+	public void setDate() {
 		System.out.println("Enter The Date (dd/mm/yyyy) :");
-		date=Utility.getString();
-		Pattern pattern=Pattern.compile("^[0-3]?[0-9]/[0-3]?[0-9]/([0-9]{4})$");
-		Matcher matcher=pattern.matcher(date);
+		date=sc.next();
+		Pattern p=Pattern.compile("^[0-3]?[0-9]/[0-3]?[0-9]/([0-9]{4})$");//"^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$"
+		Matcher m=p.matcher(date);
 
-		if(!matcher.matches())
+		if(!m.matches())
 		{	
 			setDate();
 		}	
 	}
+	//is ten digits validation 
+	public boolean isTenDigit(String number) {
+		if((number.length())==10 && number.contains("[a-zA-Z]+") == false)
+			return true;
+		else
+			return false;
+	}
 
+	public String replace(String str, String ptrn) {
+		Pattern pattern = Pattern.compile("<<name>>|<<full name>>|xxxxxxxxxx|01/01/2016");
+		Matcher m = pattern.matcher(str);
+		return m.replaceAll(ptrn);
+	}
 	public String RegexReplace()
 	{
-		String firstname="<<Name>>";
+		String firstName="<<Name>>";
 		String fullName="<<Full Name>>";
 		String mobileno="xxxxxxxxxx" ;
 		String Date="01/01/2016";
+		//Regex to replace first Name 
+		Pattern p=Pattern.compile(firstName);
+		Matcher m=p.matcher(message);
+		message=m.replaceAll(FName); 
 
-		Pattern pattern = Pattern.compile(firstname);
-		Matcher matcher = pattern.matcher(message);
-		message=matcher.replaceAll(firstName); 
+		//Regex to replace full Name
+		p=Pattern.compile(fullName);
+		m=p.matcher(message);
+		message=m.replaceAll(FName+" "+LName);
+
+		//Regex to replace mobile number
+		p=Pattern.compile(mobileno);
+		m=p.matcher(message);
+		message=m.replaceAll(MNumber);	
 
 
-		pattern=Pattern.compile(fullName);
-		matcher = pattern.matcher(message);
-		message=matcher.replaceAll(firstName+" "+lastName);
-
-
-		pattern = Pattern.compile(mobileno);
-		matcher =pattern.matcher(message);
-		message=matcher.replaceAll(mobileNumber);	
-
-
-
-		pattern =Pattern.compile(Date);
-		matcher =pattern.matcher(message);
-		message=matcher.replaceAll(date);
+		//Regex to replace Date
+		p=Pattern.compile(Date);
+		m=p.matcher(message);
+		message=m.replaceAll(date);
 		return message;
+	}
+
+	public static void main( String args[] ) {
+		Regex rx=new Regex();
+		
+		rx.setFirstName();
+	
+		rx.setLastName();	
+		
+		rx.setMobileNumber();
+		
+		rx. setDate();
+		System.out.println("hi");
+		String regixs=rx.RegexReplace();
+
+		System.out.println(regixs);
+
+
 	}
 }

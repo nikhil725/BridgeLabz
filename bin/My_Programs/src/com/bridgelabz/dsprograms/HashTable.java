@@ -20,7 +20,8 @@ import com.bridgelabz.utility.Utility;
  */
 public class HashTable {
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws IOException {
 			
 		Utility utility = new Utility();
@@ -38,18 +39,18 @@ public class HashTable {
 			
 		}
 		
-		HashMap hashmap = new HashMap();
-		LinkedList linkedList0 = new LinkedList();
-		LinkedList linkedList1 = new LinkedList();
-		LinkedList linkedList2 = new LinkedList();
-		LinkedList linkedList3 = new LinkedList();
-		LinkedList linkedList4 = new LinkedList();
-		LinkedList linkedList5 = new LinkedList();
-		LinkedList linkedList6 = new LinkedList();
-		LinkedList linkedList7 = new LinkedList();
-		LinkedList linkedList8 = new LinkedList();
-		LinkedList linkedList9 = new LinkedList();
-		LinkedList linkedList10 = new LinkedList();
+		HashMap<Integer, LinkedList<Integer>> hashmap = new HashMap<Integer, LinkedList<Integer>>();
+		LinkedList<Integer> linkedList0 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList1 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList2 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList3 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList4 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList5 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList6 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList7 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList8 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList9 = new LinkedList<Integer>();
+		LinkedList<Integer> linkedList10 = new LinkedList<Integer>();
 		
 		for(Integer element : intArray){
 			

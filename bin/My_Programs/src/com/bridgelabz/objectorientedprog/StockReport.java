@@ -17,9 +17,9 @@ import com.bridgelabz.utility.Utility;
  */
 public class StockReport {
 
-	@SuppressWarnings("unchecked")
+	
 	public static void main(String[] args){
-		JSONObject jsonObject = new JSONObject();
+		
 		JSONArray jsonArray = new JSONArray();
 		Utility utility = new Utility();
 		System.out.println("Enter Number of company");
@@ -61,12 +61,13 @@ public class StockReport {
 		for(int i=0; i<number; i++)
 		{
 			System.out.println("  "+array[i]+"        "+share[i]+"       "+amount[i]+"     "+total[i]+"/-");	
-			
+			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("Company Name",array[i]);
 			jsonObject.put("Shares",share[i]);
 			jsonObject.put("Price",amount[i]);
 			jsonObject.put("total",total[i]);
 			jsonArray.add(jsonObject);
+			
 		}	
 		
 		printWriter.write(jsonArray.toJSONString());

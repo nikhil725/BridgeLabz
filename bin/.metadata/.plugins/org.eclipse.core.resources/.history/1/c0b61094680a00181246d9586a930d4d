@@ -1,0 +1,10 @@
+package com.bridgelabz.objectorientedprog;
+
+public class RegexModifed {
+
+	   public static void main(String[] args) 
+	   {
+		   Utility utility=new Utility();
+		   utility.RegularExpression();
+	   }
+	}

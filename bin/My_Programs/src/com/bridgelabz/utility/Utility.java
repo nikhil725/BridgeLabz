@@ -6,10 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,9 +37,10 @@ import com.bridgelabz.objectorientedprog.Queue;
 import com.bridgelabz.objectorientedprog.Stack1;
 
 public class Utility {
-	
+
 	int i =0;
 	static Scanner scanner;
+	static int count1 = 0;
 	public Utility() {
 
 		scanner = new Scanner(System.in);
@@ -551,7 +554,7 @@ public class Utility {
 	/** This method is used to start the time.
 	 * @return
 	 */
-	public int start()
+	public static int start()
 	{
 		int startTime = (int) System.currentTimeMillis();
 		System.out.println("Start Time is: "+startTime);
@@ -594,16 +597,22 @@ public class Utility {
 	 */
 
 	public void permutation(String str, int length, int count) {
+
+
 		if (length == count) 
 		{
 			System.out.println(str);
+
+
 		} else {
 			for (int i = length; i <= count; i++) {
 				str = swap(str, length, i);
 				permutation(str, length + 1, count);
 				str = swap(str, length, i);
+
 			}
 		}
+
 	}
 
 	/** This method is used to swap a string.
@@ -619,7 +628,10 @@ public class Utility {
 		temp = charArray[length] ;
 		charArray[length] = charArray[size];
 		charArray[size] = temp;
-		return String.valueOf(charArray);      
+		count1++;
+		//System.out.println(count1);
+		return String.valueOf(charArray);  
+
 	}
 
 
@@ -637,17 +649,26 @@ public class Utility {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(sceondString);
 		Matcher matcher1 = pattern.matcher(firstString);
+		
+		String string = matcher1.replaceAll("");
+		sceondString = string;
+		System.out.println(sceondString);
+		
+		String string1 = matcher1.replaceAll("");
+		firstString =string1;
+		System.out.println(firstString);
 
-		if(matcher.find())
+		/*if(matcher.find())
 		{
 			String string = matcher1.replaceAll("");
 			sceondString = string;
+			System.out.println(sceondString);
 		}else if(matcher1.find()){
 
 			String string1 = matcher1.replaceAll("");
 			firstString =string1;
-
-		}
+			System.out.println(firstString);
+		}*/
 
 		char[] arr1 = firstString.toLowerCase().toCharArray();
 		char[] arr2 = sceondString.toLowerCase().toCharArray();
@@ -964,10 +985,13 @@ public class Utility {
 					mark = true;
 				}
 			}
-			System.out.println(linkedList.toString());
+			//System.out.println(linkedList.toString());
 
-			if (mark == false)
+			if (mark == false){
+				
 				linkedList.add(search);
+			}
+				
 
 			if (mark == true) 
 			{
@@ -999,37 +1023,55 @@ public class Utility {
 	 * @param word
 	 * @param arr
 	 * @param length
-	 * @return
+	 * @throws IOException 
 	 */
-	public static int binarySearch(String word, String arr[], int length){
+	public static void binarySearchForString(int size, String[] words) throws IOException{
 
-		Utility.bubbleSort(arr);
-		for (String i : arr) 
+
+		sort(words);
+		for(int i=0; i<size; i++)
 		{
-			System.out.print(i + " ");
+			System.out.println("words["+i+"] = " + words[i]);
 		}
-		System.out.println();
 
-		int temp=0;
-		if(length <= temp){
+		System.out.print("Enter word to search for: ");
+		String word = Utility.getString();
+
+		int index = bsearch(word, words, 0, words.length);
+		if(index < 0) {
+			System.out.println("not found");
+		} else {
+			System.out.println("found at index " + index);
+		}
+	}
+	private static void sort(String [] words) {
+		int length = words.length;
+		for(int i=0; i<length; i++) {
+			for(int j=i; j<length; j++) {
+				if(words[i].compareTo(words[j]) > 0) {
+					String temp = words[i];
+					words[i] = words[j];
+					words[j] = temp;
+				}
+			}
+		}
+	}
+
+	private static int bsearch(String word, String [] words, int a, int b) {
+		if(b <= a)
 			return -1;
-		}
-		if(length - temp == 1){
 
-			return arr[temp].equals(word) ? temp : -1;
-		}
+		if(b - a == 1)
+			return words[a].equals(word) ? a : -1;
 
-		int pivot = (temp + length)/2;
-		if(word.compareTo(arr[pivot]) < 0)
-		{
-			return binarySearch(word, arr,pivot);
-		} 
-		else if(word.compareTo(arr[pivot]) > 0) 
-		{
-			return binarySearch(word, arr,pivot);
+		int pivot = (a + b)/2;
+		if(word.compareTo(words[pivot]) < 0) {
+			return bsearch(word, words, 0, pivot);
+		} else if(word.compareTo(words[pivot]) > 0) {
+			return bsearch(word, words, pivot, b);
 		}
+		System.out.println("result is "+word.compareTo(words[pivot]));
 		return pivot;
-
 	}
 	/** This method insertion sort for integer.
 	 * @param arr
@@ -1442,7 +1484,7 @@ public class Utility {
 		jsonArray.add(stockUser);
 		JSONParser jsonParser = new JSONParser();
 		JSONArray object1 = (JSONArray) jsonParser.parse(reader);
-		
+
 		boolean found = true;
 		Iterator<?> itr1 = (object1).iterator();
 		while(itr1.hasNext()) 
@@ -1468,34 +1510,34 @@ public class Utility {
 	}
 	@SuppressWarnings("unchecked")
 	public static void Buy() throws IOException, ParseException {
-		
+
 		File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/userDetails.json");
-		
+
 		File file1 = new File(	"/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/stockSymbols.json");
-		
+
 		if (file.exists() && file1.exists())
 		{
 			// reading stock file
-			
+
 			FileReader fileReader = new FileReader(file);
 			JSONParser parser = new JSONParser();
 			JSONArray stock = (JSONArray) parser.parse(fileReader);
-			
+
 			// reading share file
 
 			FileReader fileReader2 = new FileReader(file1);
 			JSONParser parser1 = new JSONParser();
 			JSONArray share = (JSONArray) parser1.parse(fileReader2);
-			
+
 			System.out.println("********** @ Buy Shares @ *********");
 			System.out.println();
-			
+
 			System.out.println("Enter user name");
 			String name = Utility.getString();
 			Iterator<?> itr = ((List<Integer>) stock).iterator();
 			Iterator<?> itr1 = ((List<Integer>) share).iterator();
 			boolean flag = false;
-			
+
 			while (itr.hasNext())
 			{
 				JSONObject jsonObject = (JSONObject) itr.next();
@@ -1511,17 +1553,17 @@ public class Utility {
 						{
 							System.out.println("Enter the amount to buy the shares");
 							int ammount = Utility.getInt();
-							
+
 							int balalnce = Integer.parseInt(jsonObject.get("amount").toString());
 							int price = Integer.parseInt(jsonObject2.get("amount").toString());
 							int numberShare = Integer.parseInt(jsonObject.get("number_Share").toString());
 							int stockShare = Integer.parseInt(jsonObject2.get("Count").toString());
-							
+
 							int numofshare = ammount / price;
 							int newbalalnce = balalnce - ammount;
 							int sharecountcus = numberShare + numofshare;
 							int sharecountstock = stockShare - numofshare;
-							
+
 							jsonObject.remove("amount");
 							jsonObject.remove("number_Share");
 							jsonObject.remove("Count");
@@ -1536,14 +1578,14 @@ public class Utility {
 					}
 					System.out.println();
 					System.out.println("You buy shares successfully on... ");
-				//	System.out.println();
+					//	System.out.println();
 				}
 				FileWriter fileWriter = new FileWriter(file);
 				fileWriter.write(JSONValue.toJSONString(stock));
 				fileWriter.flush();
 				fileWriter.close();
 			}
-			
+
 			Queue queue = new Queue();
 			Stack1 stack1 = new Stack1();
 			long time = System.currentTimeMillis();
@@ -1551,7 +1593,7 @@ public class Utility {
 			queue.enqueue(date);
 			queue.print();
 			System.out.println();
-			
+
 			System.out.println("----------------------------------");
 			if (flag == false)
 			{
@@ -1565,8 +1607,8 @@ public class Utility {
 			System.out.println("File does not exits");
 		}
 	}
-	
-	
+
+
 	/**
 	 * This method is used to sell the shares.
 	 * @throws IOException
@@ -1576,12 +1618,12 @@ public class Utility {
 	public static void sell() throws IOException, ParseException {
 
 		File file = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/userDetails.json");
-		
+
 		File file1 = new File("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/stockSymbols.json");
 		if (file.exists() && file1.exists()) {
-			
-			
-			
+
+
+
 			FileReader fr = new FileReader(file);
 			JSONParser parser = new JSONParser();
 			JSONArray stock = (JSONArray) parser.parse(fr);
@@ -1589,7 +1631,7 @@ public class Utility {
 			FileReader sf = new FileReader(file1);
 			JSONParser parser1 = new JSONParser();
 			JSONArray share = (JSONArray) parser1.parse(sf);
-			
+
 			System.out.println();
 			System.out.println("**** @ Sell Shares @ ****");
 			System.out.println();
@@ -1605,7 +1647,7 @@ public class Utility {
 				{
 					System.out.println("Enter the share symbol to sell share:[@,#,!]");
 					String symbol = Utility.getString();
-					
+
 					while (itr1.hasNext())
 					{
 						JSONObject obj1 = (JSONObject) itr1.next();
@@ -1613,17 +1655,17 @@ public class Utility {
 						{
 							System.out.println("Enter the amount");
 							int ammount = Utility.getInt();
-							
+
 							int bal = Integer.parseInt(obj.get("amount").toString());
 							int price = Integer.parseInt(obj1.get("amount").toString());
 							int noShare = Integer.parseInt(obj.get("number_Share").toString());
 							int stockShare = Integer.parseInt(obj1.get("Count").toString());
-							
+
 							int numofshare = ammount / price;
 							int newbal = bal + ammount;
 							int sharecountcus = noShare - numofshare;
 							int sharecountstock = stockShare + numofshare;
-							
+
 							obj.remove("amount");
 							obj.remove("number_Share");
 							obj1.remove("Count");
@@ -1635,10 +1677,10 @@ public class Utility {
 							break;
 						}
 					}
-					
+
 					System.out.println();
 					System.out.println("Your shares sell successfully on...");
-				
+
 					Queue queue = new Queue();
 					Stack1 stack1 = new Stack1();
 					long time = System.currentTimeMillis();
@@ -1670,19 +1712,19 @@ public class Utility {
 			System.out.println("File does not exits");
 		}
 	}
-	
+
 	/** This method is used to display shares records.
 	 * @throws IOException
 	 * @throws ParseException
 	 */
 	public static void display() throws IOException, ParseException {
 
-		
+
 		FileReader reader1 = new FileReader("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/userDetails.json");
-		
+
 		JSONParser jsonParser1 = new JSONParser();
 		JSONArray jsonArrays_StackDtails = (JSONArray) jsonParser1.parse(reader1);
-		
+
 		System.out.println("**** @ User Details @ ****");
 		for (Object o1 : jsonArrays_StackDtails) 
 		{
@@ -1699,8 +1741,8 @@ public class Utility {
 			System.out.println("-----------------------------------------");
 		}
 	}
-	
-	
+
+
 	/**
 	 * This method is used to add doctors in JSON file.
 	 */
@@ -1747,7 +1789,7 @@ public class Utility {
 
 
 	}
-	
+
 	/**
 	 *  This method is used to add patient in JSON file.
 	 */
@@ -1791,8 +1833,8 @@ public class Utility {
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 *  This method is used to search doctors from JSON file.
 	 */
@@ -1823,8 +1865,8 @@ public class Utility {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	/**
 	 * This method is used to search patient from JSON file.
 	 */
@@ -1836,12 +1878,12 @@ public class Utility {
 			JSONParser parser = new JSONParser();
 			JSONArray jsonArray = (JSONArray) parser.parse(new FileReader("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addPatient.json"));
 			Iterator<?> itr = jsonArray.iterator();
-			
+
 			while(itr.hasNext())
 			{
 				JSONObject jsonobject = (JSONObject) itr.next();
 				String string = (String) jsonobject.get("Patient_Name");
-				
+
 				if (searchPatient.equals(string))
 				{
 					System.out.println("Patient_found " + jsonobject);
@@ -1855,8 +1897,8 @@ public class Utility {
 			System.out.println(e);
 		}
 	}
-	
-	
+
+
 	/**
 	 * This method is used to take appointment.
 	 */
@@ -1912,11 +1954,11 @@ public class Utility {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public void addressBook() throws ParseException {
 
-		
+
 		int i, j = 0;
 		try {
 			FileReader reader = new FileReader("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addressBook.json");
@@ -2006,11 +2048,11 @@ public class Utility {
 					String keyName = Utility.getString();
 					Iterator iterat1 = jsonArray.iterator();
 					boolean found = false;
-					
+
 					while (iterat1.hasNext())
 					{
 						JSONObject temporary = (JSONObject) iterat1.next();
-						
+
 						if (((String) temporary.get("Name")).equalsIgnoreCase(keyName))
 						{
 							found = true;
@@ -2026,29 +2068,29 @@ public class Utility {
 							int numberCheck = Utility.getInt();
 							obj.put("Number", numberCheck);
 							jsonArray.add(obj);
-							
+
 							System.out.println();
 							System.out.println("Information updated successfuly..... Thanku ");
 							System.out.println();
 						}
-						
+
 						try {
 							PrintWriter print = new PrintWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addressBook.json");
 							print.print(jsonArray.toJSONString());
 							print.close();
-							
-						
+
+
 						} catch (FileNotFoundException e) {
 							e.printStackTrace();
 						}
-						
+
 					}
 					if (found == false) 
 					{
 						System.out.println("Name not found.... Please Try again.....");
 						System.out.println();
 					}
-					
+
 				} else if (j == 3) 
 				{
 					System.out.println("Thank You......");
@@ -2065,6 +2107,87 @@ public class Utility {
 		}
 
 
+	}
+
+	public static void binarySearchInteger(int number, int[] array){
+		int item,first,last,middle;
+
+		Arrays.sort(array);
+		System.out.println("Enter the search value:");
+		item = Utility.getInt();
+		first = 0;
+		last = number - 1;
+		middle = (first + last)/2;
+
+		while( first <= last )
+		{
+			if ( array[middle] < item )
+				first = middle + 1;
+			else if ( array[middle] == item )
+			{
+				System.out.println(item + " found at location " + (middle + 1) + ".");
+				break;
+			}
+			else
+			{
+				last = middle - 1;
+			}
+			middle = (first + last)/2;
+		}
+		if ( first > last )
+			System.out.println(item + " is not found.\n");
+
+	}
+	
+	public void RegularExpression() {
+
+		Scanner sc = new Scanner(System.in);
+		Utility utility = new Utility();
+		
+		String name = "hello <<name>>";
+		System.out.println("<<name>>");
+		System.out.println("enter your name to replace ");
+		String input = sc.nextLine();
+		if (input.matches("[a-zA-Z]+") == true) {
+			name = utility.replace(name, input);
+		} else {
+			System.out.println("Invalid user name");
+			//name = "hello *invalid first name";
+		}
+		System.out.println();
+		String fname = ", We have your full name as <<full name>>";
+		System.out.println("<<full name>>");
+		System.out.println("enter the full name to replace ");
+		input = sc.nextLine();
+
+		if (input.matches("[a-z A-Z]+") == true) {
+			fname = utility.replace(fname, input);
+		} else {
+			fname = ", We have your full name as *invalid full name";
+		}
+		System.out.println();
+		String number = " in our system. your contact number is +91-xxxxxxxxxx";
+		System.out.println("+91-xxxxxxxxxx");
+		System.out.println("enter the contact number to replace ");
+		input = sc.nextLine();
+		if (input.matches("[1-9]{10}") == true) {
+			number = utility.replace(number, input);
+		} else {
+			number = " in our system. your contact number is *invalid phone number";
+		}
+		System.out.println();
+		String date1 = " Please,let us know in case of any clarification Thank you BridgeLabz 01/01/2016";
+
+		Date date = new Date();
+		String temp = date.toString();
+		date1 = utility.replace(date1, temp);
+		System.out.println(name + fname + number + date1);
+	}
+
+	public String replace(String str, String ptrn) {
+		Pattern pattern = Pattern.compile("<<name>>|<<full name>>|xxxxxxxxxx|01/01/2016");
+		Matcher m = pattern.matcher(str);
+		return m.replaceAll(ptrn);
 	}
 
 }

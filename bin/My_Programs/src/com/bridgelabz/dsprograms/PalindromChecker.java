@@ -4,18 +4,19 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import com.bridgelabz.utility.Utility;
+
 public class PalindromChecker {
 
-	@SuppressWarnings("unchecked")
+
 	public static void main(String[] args) 
 	{
-		
+		Utility utility = new Utility();
 		System.out.println("Enter string ");
-        Scanner scanner =new Scanner(System.in);
-        String string = scanner.nextLine();
-        //Deque<String> queue = new LinkedList<>();
-        @SuppressWarnings("rawtypes")
-		LinkedList queue = new LinkedList();
+       
+        String string = Utility.getString();
+       
+		LinkedList<Character> queue = new LinkedList<Character>();
         
         for (int i = string.length()-1; i >=0; i--) 
         {
