@@ -1,0 +1,40 @@
+package com.bridgelabz.dsprograms;
+
+import java.util.Scanner;
+
+public class gap {
+public static void main(String[] args) {
+	
+	int binaryGap = 0;
+	String binary = "";
+	Scanner scanner = new Scanner(System.in);
+	int num = scanner.nextInt();
+	
+	while (num > 0) 
+	{
+		binary = num % 2 + binary;
+		decimal = decimal / 2;
+	}
+	System.out.println("Enter decimal number ");
+	char[] characters = str.toCharArray();
+	Character c;
+	int j = 0;
+	for (int i = 0; i < characters.length; i++) {
+        c = characters[i];
+       if (c.equals('0')) {
+           j += 1;
+       }
+
+       if (c.equals('1')) {
+           if (j > binaryGap ){
+               binaryGap = j;
+           }
+           j = 0;
+       }
+
+   }
+   System.out.println(binaryGap);
+
+
+}
+}

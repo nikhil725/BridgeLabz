@@ -1,0 +1,9 @@
+package com.bridgelabz.designpattern;
+
+public class Pc extends Computer{
+
+	private String ram;
+	private String hardDisk;
+	private String processor;
+	private string cpu;
+}

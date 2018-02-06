@@ -1745,13 +1745,22 @@ public class Utility {
 
 	/**
 	 * This method is used to add doctors in JSON file.
+	 * @throws ParseException 
 	 */
 	@SuppressWarnings("unchecked")
-	public void addDoctors() 
+	public void addDoctors() throws ParseException 
 	{
+		
+		FileReader reader;
+		try {
+			reader = new FileReader("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addDoctor.json");
+			JSONParser jsonParser = new JSONParser();
+			Object obj1 = jsonParser.parse(reader);
+			JSONArray jsonArray = (JSONArray) obj1;
+		
+		
 		System.out.println("Enter number of doctors :");
 		int num0fDoctor = Utility.getInt();
-		JSONArray jsonArray = new JSONArray();
 		for (int i = 0; i < num0fDoctor; i++)
 		{
 			JSONObject jsonObject = new JSONObject();
@@ -1773,15 +1782,17 @@ public class Utility {
 
 			jsonArray.add(jsonObject);
 		}
-		try
-		{
+		
 			System.out.println("*************** Doctor Details ************");
 			System.out.println();
-			FileWriter jsonFileWriter = new FileWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addDoctor.json");
-
-			jsonFileWriter.write(((JSONAware) jsonArray).toJSONString());
-			jsonFileWriter.flush();
-			jsonFileWriter.close();
+		//	FileWriter jsonFileWriter = new FileWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addDoctor.json");
+			PrintWriter printWriter = new PrintWriter("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addDoctor.json");
+			printWriter.print(jsonArray.toJSONString());
+			printWriter.flush();
+			printWriter.close();
+			//jsonFileWriter.print(((JSONAware) jsonArray).toJSONString());
+//			jsonFileWriter.flush();
+//			jsonFileWriter.close();
 			System.out.println("Doctor Added:" + jsonArray);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -1792,15 +1803,22 @@ public class Utility {
 
 	/**
 	 *  This method is used to add patient in JSON file.
+	 * @throws ParseException 
 	 */
 	@SuppressWarnings("unchecked")
-	public void addPatient() {
+	public void addPatient() throws ParseException {
 
-		{
-			System.out.println("Enter no. of Patient");
+		FileReader reader;
+		try {
+			
+			reader = new FileReader("/home/bridgeit/BridgeLabz/bin/My_Programs/src/com/bridgelabz/objectorientedprog/addPatient.json");
+			JSONParser jsonParser = new JSONParser();
+			Object obj1 = jsonParser.parse(reader);
+			JSONArray jsonArray = (JSONArray) obj1;
+		
+			System.out.println("Enter number of Patient");
 			int numberOfPatient = Utility.getInt();
-			JSONArray jsonArray = new JSONArray();
-
+			
 			for (int i = 0; i < numberOfPatient; i++)
 			{
 				JSONObject jsonObject = new JSONObject();
@@ -1818,7 +1836,7 @@ public class Utility {
 				jsonObject.put("Patient_Age", patientAge);
 				jsonArray.add(jsonObject);
 			}
-			try {
+		
 				System.out.println("*************** Patient Details ************");
 				System.out.println();
 				FileWriter jsonFileWriter = new FileWriter(
@@ -1832,7 +1850,7 @@ public class Utility {
 				e.printStackTrace();
 			}
 		}
-	}
+	
 
 
 	/**
@@ -1970,7 +1988,7 @@ public class Utility {
 			System.out.println();
 			System.out.println("Enter 1 to add details or enter any key to Display address book. ");
 			i = Utility.getInt();
-			// JSONArray temp=new JSONArray();
+			
 			while (i == 1) {
 
 				JSONObject obj = new JSONObject();
@@ -1998,7 +2016,7 @@ public class Utility {
 				e.printStackTrace();
 			}
 
-			Iterator iterat = jsonArray.iterator();
+			Iterator<JSONObject> iterat = jsonArray.iterator();
 			System.out.println("********* Records In My Address Book **********");
 			System.out.println();
 			while (iterat.hasNext()) {
@@ -2139,56 +2157,6 @@ public class Utility {
 
 	}
 	
-	public void RegularExpression() {
-
-		Scanner sc = new Scanner(System.in);
-		Utility utility = new Utility();
-		
-		String name = "hello <<name>>";
-		System.out.println("<<name>>");
-		System.out.println("enter your name to replace ");
-		String input = sc.nextLine();
-		if (input.matches("[a-zA-Z]+") == true) {
-			name = utility.replace(name, input);
-		} else {
-			System.out.println("Invalid user name");
-			//name = "hello *invalid first name";
-		}
-		System.out.println();
-		String fname = ", We have your full name as <<full name>>";
-		System.out.println("<<full name>>");
-		System.out.println("enter the full name to replace ");
-		input = sc.nextLine();
-
-		if (input.matches("[a-z A-Z]+") == true) {
-			fname = utility.replace(fname, input);
-		} else {
-			fname = ", We have your full name as *invalid full name";
-		}
-		System.out.println();
-		String number = " in our system. your contact number is +91-xxxxxxxxxx";
-		System.out.println("+91-xxxxxxxxxx");
-		System.out.println("enter the contact number to replace ");
-		input = sc.nextLine();
-		if (input.matches("[1-9]{10}") == true) {
-			number = utility.replace(number, input);
-		} else {
-			number = " in our system. your contact number is *invalid phone number";
-		}
-		System.out.println();
-		String date1 = " Please,let us know in case of any clarification Thank you BridgeLabz 01/01/2016";
-
-		Date date = new Date();
-		String temp = date.toString();
-		date1 = utility.replace(date1, temp);
-		System.out.println(name + fname + number + date1);
-	}
-
-	public String replace(String str, String ptrn) {
-		Pattern pattern = Pattern.compile("<<name>>|<<full name>>|xxxxxxxxxx|01/01/2016");
-		Matcher m = pattern.matcher(str);
-		return m.replaceAll(ptrn);
-	}
-
+	
 }
 

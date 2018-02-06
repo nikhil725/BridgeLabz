@@ -1,5 +1,7 @@
 package com.bridgelabz.objectorientedprog;
 
+import org.json.simple.parser.ParseException;
+
 import com.bridgelabz.utility.Utility;
 
 /**
@@ -11,7 +13,7 @@ import com.bridgelabz.utility.Utility;
  */
 public class CliniqueManagement {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		Utility utility = new Utility();
 		
 		while (true) 
