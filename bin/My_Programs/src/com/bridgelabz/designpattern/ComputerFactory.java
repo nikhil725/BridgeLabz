@@ -3,9 +3,9 @@ package com.bridgelabz.designpattern;
 public class ComputerFactory {
 
 
-		public static Computer getComputer(String type, String ram, String hdd, String cpu){
-			if("PC".equalsIgnoreCase(type)) return new PC(ram, hdd, cpu);
-			else if("Server".equalsIgnoreCase(type)) return new Server(ram, hdd, cpu, processor);
+		public static Computer getComputer(String type, String ram, String harddisk, String cpu, String processor){
+			if("PC".equalsIgnoreCase(type)) return new Pc(ram, harddisk, cpu, processor);
+			else if("Server".equalsIgnoreCase(type)) return new Server(ram, harddisk, cpu, processor);
 			
 			return null;
 		}

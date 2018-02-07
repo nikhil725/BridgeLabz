@@ -1,0 +1,16 @@
+package com.bridgelabz.designpattern;
+
+public class LazyInitialization {
+
+	static LazyInitialization eagerInitialization = new LazyInitialization();
+
+	private LazyInitialization() {
+		
+	}
+	
+	public static EagerInitialization getInstance() {
+		
+		return LazyInitialization;
+		
+	}
+}

@@ -1,0 +1,27 @@
+package com.bridgelabz.designpattern;
+
+public class ThreadSafeSingleton {
+	
+	static ThreadSafeSingleton threadSafeSingleton;
+	
+	private ThreadSafeSingleton() {
+	
+		
+	}
+	
+	public static ThreadSafeSingleton getInstance(){
+		
+		if(threadSafeSingleton == null){
+			
+			threadSafeSingleton = new ThreadSafeSingleton();
+		}
+		
+		return threadSafeSingleton;
+	}
+
+	public static void main(String[] args) {
+		
+		ThreadSafeSingleton obj = getInstance();
+		ThreadSafeSingleton obj1 = getInstance();
+	}
+}

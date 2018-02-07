@@ -96,11 +96,11 @@ public class Regex {
 		}
 	}
 
-	public String replace(String str, String ptrn) {
+	/*public String replace(String str, String ptrn) {
 		Pattern pattern = Pattern.compile("<<name>>|<<full name>>|xxxxxxxxxx|01/01/2016");
 		Matcher matcher = pattern.matcher(str);
 		return matcher.replaceAll(ptrn);
-	}
+	}*/
 	public String RegexReplace()
 	{
 		String firstName="<<Name>>";

@@ -1,0 +1,19 @@
+package com.bridgelabz.designpattern;
+
+import com.bridgelabz.utility.Utility;
+
+public class EmployeeDemo {
+
+	public static void main(String[] args) {
+		
+		Utility utility = new Utility();
+		
+		System.out.println("Enter Employee id");
+		int empId = Utility.getInt();
+		
+		System.out.println("Enter Employee Name");
+		String empName = Utility.getString();
+
+	}
+
+}

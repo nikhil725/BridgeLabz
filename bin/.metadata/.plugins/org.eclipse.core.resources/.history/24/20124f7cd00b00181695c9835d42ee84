@@ -1,0 +1,22 @@
+package com.bridgelabz.designpattern;
+
+public class StaticBlockInitialization {
+	
+	static StaticBlockInitialization  staticBlockInitialization;
+	
+	private StaticBlockInitialization() {
+		
+	}
+	
+	private StaticBlockInitialization getInstance() {
+		
+		static{
+			
+			staticBlockInitialization = new StaticBlockInitialization();
+		}
+		return staticBlockInitialization;
+		
+		
+	}
+
+}

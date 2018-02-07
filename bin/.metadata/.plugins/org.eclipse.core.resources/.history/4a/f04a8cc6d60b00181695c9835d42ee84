@@ -1,0 +1,39 @@
+package com.bridgelabz.designpattern;
+
+public class ThreadSafeSingleton {
+	
+	static ThreadSafeSingleton threadSafeSingleton;
+	
+	private ThreadSafeSingleton() {
+	
+		System.out.println("Instance is created");
+		
+	}
+	
+	public static ThreadSafeSingleton getInstance(){
+		
+		if(threadSafeSingleton == null){
+			
+			threadSafeSingleton = new ThreadSafeSingleton();
+		}
+		
+		return threadSafeSingleton;
+	}
+
+	public static void main(String[] args) {
+		
+		Thread thread1 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+		});
+		
+		ThreadSafeSingleton obj = getInstance();
+		ThreadSafeSingleton obj1 = getInstance();
+	}
+}

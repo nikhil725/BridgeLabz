@@ -1,0 +1,11 @@
+package com.bridgelabz.designpattern;
+
+public class StaticBlockInitialization {
+	
+	static StaticBlockInitialization  staticBlockInitialization;
+	
+	private StaticBlockInitialization() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,7 @@
+package com.bridgelabz.designpattern;
+
+public class EagerInitialization {
+	
+	static EagerInitialization eagerInitialization = new EagerInitialization();
+
+}
