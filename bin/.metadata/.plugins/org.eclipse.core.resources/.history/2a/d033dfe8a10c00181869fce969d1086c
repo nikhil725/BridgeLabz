@@ -1,0 +1,30 @@
+package com.bridgelabz.designpattern;
+
+import java.util.ArrayList;
+
+public class Product implements Subject {
+
+	private String productName;
+	private ArrayList<Observer> listObservers = new ArrayList<Observer>();
+	
+	
+	@Override
+	public void registerObserver(Observer observer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void notifyObserver() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+}

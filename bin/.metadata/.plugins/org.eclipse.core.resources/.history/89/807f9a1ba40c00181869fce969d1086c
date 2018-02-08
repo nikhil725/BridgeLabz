@@ -1,0 +1,17 @@
+package com.bridgelabz.designpattern;
+
+public class ObserverPatternDemo {
+
+	public static void main(String[] args) {
+		
+		Customer customer1 = new Customer();
+		customer1.setCustomerName("Nikhil");
+		
+		Customer customer2 = new Customer();
+		customer2.setCustomerName("Pranav");
+		
+		Customer customer3 = new Customer();
+		customer3.setCustomerName("Sanket");
+	}
+
+}

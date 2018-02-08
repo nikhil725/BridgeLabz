@@ -38,7 +38,6 @@
 <fullyQualifiedTypeName name="com.bridgelabz.objectorientedprog.Stack1"/>
 <fullyQualifiedTypeName name="com.bridgelabz.objectorientedprog.ListNodeStack"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="com.bridgelabz.utility.Utility"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="java.sql.Date"/>
@@ -48,6 +47,17 @@
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.bridgelabz.designpattern.Computer"/>
+<fullyQualifiedTypeName name="java.lang.StackTraceElement"/>
+<fullyQualifiedTypeName name="com.bridgelabz.designpattern.LazyInitialization"/>
+<fullyQualifiedTypeName name="com.bridgelabz.designpattern.EagerInitialization"/>
+<fullyQualifiedTypeName name="com.bridgelabz.designpattern.StaticBlockInitialization"/>
+<fullyQualifiedTypeName name="com.bridgelabz.designpattern.ThreadSafeSingleton"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="com.bridgelabz.designpattern.Prototype"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.bridgelabz.utility.Utility"/>
+<fullyQualifiedTypeName name="com.bridgelabz.designpattern.EmployeeRecord"/>
+<fullyQualifiedTypeName name="java.lang.Cloneable"/>
 </qualifiedTypeNameHistroy>

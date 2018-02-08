@@ -1,0 +1,7 @@
+package com.bridgelabz.designpattern;
+
+public  class ProxyImage implements Image {
+
+	private RealImage realImage;
+	private String fileName;
+}
