@@ -1,0 +1,11 @@
+package com.bridgelabz.vistorpattern;
+
+import java.util.LinkedHashMap;
+
+public class Client {
+
+	public static void main(String[] args) {
+		
+		LinkedHashMap<String, Product> productMap = ShoppingMallVisitor.productMap;
+	}
+}

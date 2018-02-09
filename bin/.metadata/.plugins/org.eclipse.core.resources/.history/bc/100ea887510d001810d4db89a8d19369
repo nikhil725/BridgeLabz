@@ -1,0 +1,6 @@
+package com.bridgelabz.vistorpattern;
+
+public class ShoppingMallVisitor {
+
+	public void visit(Product product);
+}

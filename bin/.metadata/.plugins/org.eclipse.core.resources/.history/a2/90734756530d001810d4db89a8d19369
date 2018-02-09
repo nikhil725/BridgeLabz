@@ -1,0 +1,9 @@
+package com.bridgelabz.vistorpattern;
+
+import java.util.LinkedHashMap;
+
+public class ShoppingMallProducts {
+
+	static LinkedHashMap<String, Product> productMap;
+	
+}

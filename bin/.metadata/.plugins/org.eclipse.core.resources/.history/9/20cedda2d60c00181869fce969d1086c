@@ -1,0 +1,14 @@
+package com.bridgelabz.vistorpattern;
+
+public class Shirt {
+	
+	private String brandName;
+	private String size;
+	
+	public Shirt(String brandName, String size) {
+	
+		this.brandName = brandName;
+		this.size = size;
+	}
+
+}

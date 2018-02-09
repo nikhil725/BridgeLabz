@@ -1,0 +1,8 @@
+package com.bridgelabz.vistorpattern;
+
+public class Shirt {
+	
+	private String brandName;
+	
+
+}

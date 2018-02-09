@@ -1,0 +1,24 @@
+package com.bridgelabz.vistorpattern;
+
+public class Book extends Product {
+	
+	private String name;
+	private String isbnNumber;
+
+	
+	public Book(String name, String isbnNumber, int price) {
+		
+		this.name = name;
+		this.isbnNumber = isbnNumber;
+		this.price = price;
+		}
+
+
+	@Override
+	public void accept(ShoppingMallVisitor shoppingMallVisitor) {
+
+		shoppingMallVisitor.visit(this);
+	}
+	
+
+}
