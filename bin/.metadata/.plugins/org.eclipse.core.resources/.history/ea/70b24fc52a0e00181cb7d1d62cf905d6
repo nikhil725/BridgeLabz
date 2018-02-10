@@ -1,0 +1,18 @@
+package com.bridgelabz.singletonpattern;
+
+//Java code for Bill Pugh Singleton Implementaion
+public class Lazy{
+	
+	private Lazy() {
+		// TODO Auto-generated constructor stub
+	}
+	
+		private static class BillPughSingleton
+		{
+			private static final Lazy LAZY = new Lazy();
+		}
+		
+		public static Lazy getInstance(){
+			return BillPughSingleton.LAZY
+		}
+}

@@ -1,0 +1,5 @@
+package com.bridgelabz.singletonpattern;
+
+public class Singleton {
+
+}

@@ -1,0 +1,20 @@
+package com.bridgelabz.singletonpattern;
+
+public class Lazy {
+	
+	private Lazy() {
+		
+	}
+	
+	private static Class BillPughSingleton
+	{
+		private static final Lazy lazy = new Lazy();
+	}
+	
+	public static Lazy getInstane(){
+		
+		return BillPughSingleton.lazy;
+	}
+	
+
+}

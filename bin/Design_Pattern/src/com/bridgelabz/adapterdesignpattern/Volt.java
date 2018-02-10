@@ -3,6 +3,7 @@ package com.bridgelabz.adapterdesignpattern;
 public class Volt {
 	
 private int volts;
+
 	
 	public Volt(int v){
 		this.volts=v;
