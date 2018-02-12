@@ -9,8 +9,7 @@ public class ReflectionSingleton {
 	        Singleton instance2 = null;
 	        try
 	        {
-	            Constructor[] constructors = 
-	                    Singleton.class.getDeclaredConstructors();
+	            Constructor[] constructors = Singleton.class.getDeclaredConstructors();
 	            for (Constructor constructor : constructors) 
 	            {
 	                // Below code will destroy the singleton pattern

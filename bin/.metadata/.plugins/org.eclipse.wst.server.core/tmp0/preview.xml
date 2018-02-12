@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server port="8080">
+  <module context="Basic_Html" name="Basic_Html" path="/home/bridgeit/BridgeLabz/bin/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/Basic_Html" type="j2ee"/>
+</server>

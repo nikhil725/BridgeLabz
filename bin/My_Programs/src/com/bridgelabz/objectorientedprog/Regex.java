@@ -1,4 +1,5 @@
 package com.bridgelabz.objectorientedprog;
+import java.sql.Date;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -50,7 +51,7 @@ public class Regex {
 		System.out.println("Enter The Mobile Number :");
 		mNumber=sc.next();
 
-		while (isTenDigit(mNumber)) {
+		while (!isTenDigit(mNumber)) {
 			
 			System.out.println("Invalid mobile number");
 			System.out.println("Please enter number again");
@@ -61,27 +62,26 @@ public class Regex {
 
 
 	public void setDate() {
-		System.out.println("Enter The Date (dd/mm/yyyy) :");
-		date=sc.next();
-		Pattern pattern = Pattern.compile("^[0-3]?[0-9]/[0-3]?[0-9]/([0-9]{4})$");//"^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$"
-		Matcher matcher = pattern.matcher(date);
+	
+//		System.out.println("Enter The Date (dd/mm/yyyy) :");
+//		date=sc.next();
+	//	Pattern pattern = Pattern.compile("^[0-3]?[0-9]/[0-3]?[0-9]/([0-9]{4})$");//"^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$"
+	//	Matcher matcher = pattern.matcher(temp);
 
-		if(!matcher.matches())
-		{	
-			setDate();
-		}	
+//		if(!matcher.matches())
+//		{	
+//			setDate();
+//		}	
 	}
 	//is ten digits validation 
-	public boolean isTenDigit(String number) {
-		if((number.length())==10 && number.contains("[a-zA-Z]+")){
-			
+	public boolean isTenDigit(String number)
+	{
+		String matcher="^[0-9]+$";
+		if((number.matches(matcher))){
 			return true;
-		}
 			
-		else{
-			return false;
 		}
-			
+		return false;
 	}
 
 	public boolean iscontainNumber(String name) 
@@ -104,7 +104,7 @@ public class Regex {
 		String firstName="<<Name>>";
 		String fullName="<<Full Name>>";
 		String mobileno="xxxxxxxxxx" ;
-		String Date="01/01/2016";
+		String Date="12/02/2018";
 
 		//Regex to replace first Name 
 		Pattern pattern = Pattern.compile(firstName);
@@ -121,11 +121,12 @@ public class Regex {
 		matcher = pattern.matcher(message);
 		message=matcher.replaceAll(mNumber);	
 
-
+		Date date = new Date(0);
+		String temp = date.toString();
 		//Regex to replace Date
 		pattern = Pattern.compile(Date);
 		matcher = pattern.matcher(message);
-		message=matcher.replaceAll(date);
+		message=matcher.replaceAll(temp);
 		return message;
 	}
 

@@ -1,0 +1,7 @@
+package com.bridgelabz.facadedesignpattern;
+
+public interface Hotel {
+	
+	  public Menus getMenus();
+
+}

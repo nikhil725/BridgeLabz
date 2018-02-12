@@ -2156,7 +2156,75 @@ public class Utility {
 			System.out.println(item + " is not found.\n");
 
 	}
-	
-	
+	public static void stackCalender(int month, int year) 
+	{
+			// TODO Auto-generated method stub
+		int count=0;
+		int number =1;
+		int indexCounter =0;
+		int loopCounter =0;
+		Stack<String> stack=new Stack<>();
+		Stack<String> stack1=new Stack<>();
+		String []weekDays = {"Sun","Mon","Tue","Wed","Thr","Fri","Sat"};
+
+		//array list for number of days that a month carries
+		int []days = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+				
+		//Setting feb as 29 if the year is leap
+		if(isLeapYear(year)&& month == 2)
+			days[2]=29;
+		String[] months = {"",                              
+		           "January", "February", "March",
+		           "April", "May", "June",
+		           "July", "August", "September",
+		           "October", "November", "December"
+		       		};
+		//to return the day where we will start the month
+		int day=weekDay(1,month, year);		
+		while(count < day) {
+			stack.push("   ");
+		    count++;
+		}
+		while(number<=days[month])
+		{
+			if(number<10)
+			{	stack.push(" "+Integer.toString(number++)+" ");
+				number++;
+			}
+			else
+			{
+				stack.push(Integer.toString(number++));
+				number++;
+			}
+		}
+		//to make sure that printing array doesnt runs out of loop
+		indexCounter =count+(number-1);
+
+		//moving elements from one stack to another
+		for(int i=0;i<=stack.size()-1;i++) 
+		{
+			stack1.push(stack.pop());
+		}
+		//Displaying the Calander
+		//month and year
+		System.out.println(" "+months[month]+" "+year);
+		//days of the week
+		for (int i = 0; i < weekDays.length; i++)
+		{
+			System.out.print(" "+weekDays[i]);
+		}
+		System.out.println();
+		for(int i =0;i<6;i++) 
+		{
+			for(int j=0;j<7;j++) 
+			{
+				if(loopCounter==indexCounter|| stack1.isEmpty())
+					break;
+				System.out.print(" "+stack1.pop());
+				loopCounter++;
+			}
+			System.out.println();
+		}
+	}
 }
 

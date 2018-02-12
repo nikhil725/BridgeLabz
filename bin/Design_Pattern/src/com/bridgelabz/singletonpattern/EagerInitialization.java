@@ -7,6 +7,7 @@ public class EagerInitialization {
 	private EagerInitialization() {
 		
 		System.out.println("Instance created");
+		System.out.println("Instance is created");
 	}
 	
 	public static EagerInitialization getInstance() {

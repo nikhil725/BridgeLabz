@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1> My page </h1>
+Name: <input type="text" 	placeholder="name">
+Address: <input type="text" placeholder="address">
+<input type="submit" name=>
+</body>
+</html>

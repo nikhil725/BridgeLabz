@@ -1,0 +1,5 @@
+package com.bridgelabz.facadedesignpattern;
+
+public interface Hotel {
+
+}
