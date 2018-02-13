@@ -1,9 +1,0 @@
-package com.bridgelabz.singletonpattern;
-
-//Java code for Bill Pugh Singleton Implementaion
-public class LazyIniti{
-	
-	private LazyIniti() {
-		// TODO Auto-generated constructor stub
-	}
-}

@@ -1,5 +1,0 @@
-package com.bridgelabz.facadedesignpattern;
-
-public interface MobileShop {
-
-}

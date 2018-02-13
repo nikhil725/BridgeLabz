@@ -1,7 +1,0 @@
-package com.bridgelabz.designpattern;
-
-public class EmployeeRecord {
-
-	private int id;
-	private String name, department;
-}

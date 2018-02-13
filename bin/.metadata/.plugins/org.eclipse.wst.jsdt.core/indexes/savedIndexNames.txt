@@ -1,8 +1,0 @@
-INDEX VERSION 1.3+/home/bridgeit/BridgeLabz/bin/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-4030901001.index
-1416918890.index
-2874393469.index
-2196170973.index
-1047116523.index
-2942823157.index
-3795203257.index
