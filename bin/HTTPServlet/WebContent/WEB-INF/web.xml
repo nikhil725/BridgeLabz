@@ -23,4 +23,13 @@
 		<servlet-name>inget</servlet-name>
 		<url-pattern>/DogetExample</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InseartData</servlet-name>
+		<servlet-class>com.briglabz.httpservlet.InseartData</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InseartData</servlet-name>
+		<url-pattern>/InseartData</url-pattern>
+	</servlet-mapping>
 </web-app>
