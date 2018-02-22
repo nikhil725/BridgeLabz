@@ -32,4 +32,13 @@
 		<servlet-name>InseartData</servlet-name>
 		<url-pattern>/InseartData</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>EmpUpdateDelete</servlet-name>
+		<servlet-class>com.briglabz.httpservlet.EmpUpdateDelete</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EmpUpdateDelete</servlet-name>
+		<url-pattern>/EmpUpdateDelete</url-pattern>
+	</servlet-mapping>
 </web-app>
