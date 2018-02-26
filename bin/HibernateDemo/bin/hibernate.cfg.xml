@@ -16,5 +16,4 @@
                 <property name="connection.driver_class">com.mysql.jdbc.Driver	</property>  
     <mapping resource="employee.hbm.xml"/>  
   </session-factory>
-  
   </hibernate-configuration>        
