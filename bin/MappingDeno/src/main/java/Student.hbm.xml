@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+ <hibernate-mapping>
+ <class name="com.bridgelabz.MappingDeno.Student" table="StudentInfo">
+ <id name="studid">
+ <generator class="sequence">
+ <param name="sequence">stud_seq</param>
+ </generator>
+ </id>
+ <property name="studname"></property>
+ <one-to-one name="address" class="com.bridgelabz.MappingDeno.Address" cascade="all">
+ 
+ </one-to-one>
+ 
+ </class>
+<class  name="com.bridgelabz.MappingDeno.Address"  table="addressinfo">
+    <id name="studid">
+      <generator class="foreign">
+        <param name="property">student</param>
+      </generator>
+    </id>
+    <property name="flatNo"/>
+    <property name="Street"/>
+    <property name="City"/>
+    <one-to-one name="student" class="com.bridgelabz.MappingDeno.Student" constrained="true"></one-to-one>
+  </class>
+  </hibernate-mapping>
