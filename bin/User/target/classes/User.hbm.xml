@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.bridgelabz.User.dto.User" table="UserDetail">
+		<id name="id" column="Id" type="int">
+		<generator class="increment" />
+		</id>
+		<property name="name" column="Name" type="string"></property>
+		<property name="password" column="Password" type="string"></property>
+		<property name="address" column="Address" type="string"></property>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,6 @@
+/home/bridgeit/BridgeLabz/ToDo/ToDoApp/src/main/java/com/bridgeit/user/service/UserServiceImpl.java
+/home/bridgeit/BridgeLabz/ToDo/ToDoApp/src/main/java/com/bridgeit/user/controller/UserController.java
+/home/bridgeit/BridgeLabz/ToDo/ToDoApp/src/main/java/com/bridgeit/user/dao/IUserDao.java
+/home/bridgeit/BridgeLabz/ToDo/ToDoApp/src/main/java/com/bridgeit/user/service/IUserService.java
+/home/bridgeit/BridgeLabz/ToDo/ToDoApp/src/main/java/com/bridgeit/user/dao/UserDaoImpl.java
+/home/bridgeit/BridgeLabz/ToDo/ToDoApp/src/main/java/com/bridgeit/user/model/User.java

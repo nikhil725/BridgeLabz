@@ -1,0 +1,13 @@
+com/bridgeit/todo/notes/dao/NoteDaoImpl.class
+com/bridgeit/todo/user/controller/UserController.class
+com/bridgeit/todo/user/dao/IUserDao.class
+com/bridgeit/todo/notes/dao/INoteDao.class
+com/bridgeit/todo/user/model/User.class
+com/bridgeit/todo/util/Validation.class
+com/bridgeit/todo/notes/service/INoteService.class
+com/bridgeit/todo/util/Mail$1.class
+com/bridgeit/todo/user/service/IUserService.class
+com/bridgeit/todo/notes/model/Notes.class
+com/bridgeit/todo/util/Mail.class
+com/bridgeit/todo/user/service/UserServiceImpl.class
+com/bridgeit/todo/user/dao/UserDaoImpl.class

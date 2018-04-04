@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="myMobile" class="com.bridgelabz.dto.MyMobile"></bean>
+<bean id="communication" class="com.bridgelabz.bean.Communication">
+		<constructor-arg ref="myMobile"></constructor-arg>
+</bean>
+</beans>

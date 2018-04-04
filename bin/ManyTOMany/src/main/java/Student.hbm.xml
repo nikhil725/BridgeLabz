@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">	
+ <hibernate-mapping>
+ 
+  <class name="com.bridgeit.model.Student" table="studentinfo1">
+    <id name="studentId" column="student_id" type="short"/>
+ 
+    <property name="studentName" column="student_name" length="10"/>
+    <property name="marks" />
+ 
+    <set name="com.bridgeit.model.Course" cascade="all" table="keysinfo">
+      <key column="student_id "/>
+      <many-to-many class="com.bridgeit.model.Course" column="course_id"/>
+    </set>
+  </class>
+ 
+  <class name="com.bridgeit.model.Course" table="courseinfo1">
+    <id name="courseId" column="course_id" />
+    <property name="courseName" column="course_name" length="6"/>
+    <property name="duration" length="8"/>
+ 
+    <set name="students" inverse="false" cascade="all" table="keysinfo">
+      <key column="course_id" />
+      <many-to-many class="com.bridgeit.model.Student" column="student_id "/>
+    </set>
+  </class>
+</hibernate-mapping>

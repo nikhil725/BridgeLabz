@@ -23,5 +23,6 @@ public class DeleteQuery {
         int result = query.executeUpdate();
         
         System.out.println("Student data deleted successfully "+result);
+        
 	}
 }

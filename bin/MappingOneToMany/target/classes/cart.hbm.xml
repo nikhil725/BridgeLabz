@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.bridgeit.model">
+	<class name="com.bridgeit.model.Cart" table="CART">
+		<id name="id" type="long">
+			<column name="cart_id" />
+			<generator class="identity" />
+		</id>
+		<property name="total" type="double">
+			<column name="total" />
+		</property>
+		<property name="name" type="string">
+			<column name="name" />
+		</property>
+		<set name="items" table="ITEMS" fetch="select">
+			<key>
+				<column name="cart_id"></column>
+			</key>
+			<one-to-many class="com.bridgeit.model.Items" />
+		</set>
+	</class>
+
+</hibernate-mapping>

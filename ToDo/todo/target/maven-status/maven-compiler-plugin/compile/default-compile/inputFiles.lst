@@ -1,0 +1,14 @@
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/user/service/UserServiceImpl.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/notes/dao/NoteDaoImpl.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/user/dao/UserDaoImpl.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/notes/service/INoteService.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/util/Validation.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/notes/model/Notes.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/user/controller/UserController.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/util/Mail.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/notes/dao/INoteDao.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/user/dao/IUserDao.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/notes/controller/NoteController.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/notes/service/NoteServiceImpl.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/user/model/User.java
+/home/bridgeit/BridgeLabz/ToDo/todo/src/main/java/com/bridgeit/todo/user/service/IUserService.java
